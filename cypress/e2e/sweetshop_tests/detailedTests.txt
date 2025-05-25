@@ -1,0 +1,853 @@
+TC 1.1.1 Check the page has title 'Sweet Shop Project'
+  Test Summary:
+  Verify the About page displays the correct title "Sweet Shop Project".
+
+  Preconditions:
+  User is on the About page.
+  Test Steps:
+      Navigate to the About page of the Sweet Shop.
+      Observe the page title in the browser tab or heading element.
+  Expected Result:
+  The title should be "Sweet Shop Project".
+
+TC 1.1.2 Check the page has the description
+  Test Summary:
+  Verify the About page displays the correct description text.
+
+  Preconditions:
+  User is on the About page.
+
+  Test Steps:
+      Navigate to the About page of the Sweet Shop.
+      Locate the description section below the page title.
+      Observe the text content.
+
+  Expected Result:
+  The page displays a relevant and visible description of the Sweet Shop.
+
+TC 1.1.3 Check the page has the banner and it matches 2018
+  Test Summary:
+  Verify the About page includes a banner that matches the 2018 design.
+
+  Preconditions:
+  User is on the About page.
+
+  Test Steps:
+      Navigate to the About page.
+      Scroll to the banner section of the page.
+      Compare the displayed banner with the 2018 design reference.
+
+  Expected Result:
+  The banner is visible and matches the 2018 design/logo.
+
+TC 2.1.1 Check 'Login' title and description
+  Test Summary:
+  Verify the Login page displays the correct title and description.
+
+  Preconditions:
+  User is on the Login page.
+
+  Test Steps:
+      Navigate to the Login page.
+      Observe the page title at the top of the form.
+      Read the description text below or near the title.
+
+  Expected Result:
+  The page shows the title "Login" and a relevant description (e.g., “Please sign in to continue”).
+
+TC 2.1.2 Check the page has 'username' and 'password' textboxes
+  Test Summary:
+  Verify the Login page contains both username and password input fields.
+
+  Preconditions:
+  User is on the Login page.
+
+  Test Steps:
+      Navigate to the Login page.
+      Locate the username input fieldand and verify it exist.
+      Locate the password input field and verify it exist.
+
+  Expected Result:
+  Both username and password textboxes are visible and enabled for user input.
+
+TC 2.2.1 Successful login scenario
+  Test Summary:
+  Verify that a user can log in with valid credentials.
+
+  Preconditions:
+  User has valid login credentials.
+
+  Test Steps:
+      Navigate to the Login page.
+      Enter a valid username.
+      Enter the correct password.
+      Click the Login button.
+
+  Expected Result:
+  User is successfully logged in and redirected to the Home page or dashboard.
+  Absolutely! Here's the full set of test cases in your requested format:
+
+
+TC 2.2.2 Unsuccessful login scenario
+  Test Summary:
+  Verify that login fails with invalid credentials and shows an error.
+
+  Preconditions:
+  User is not logged in.
+
+  Test Steps:
+      Navigate to the Login page.
+      Enter an incorrect username or password.
+      Click the Login button.
+
+  Expected Result:
+  Login attempt fails and an error message is shown: "Please enter a valid ... "
+
+
+
+
+
+
+
+TC 3.1.1 Verify the page has a header, body, and footer section
+  Test Summary:
+  Ensure the Home page contains a properly structured layout with header, body, and footer elements.
+
+  Preconditions:
+  User is on the Home page.
+
+  Test Steps:
+      Navigate to the Home page.
+      Inspect the top section for a header.
+      Check the central content for a body section.
+      Scroll down to locate the footer.
+
+  Expected Result:
+  The page displays a header, main body, and footer section.
+
+TC 3.1.2 Verify the page title is exactly "Welcome to the sweet shop!"
+  Test Summary:
+  Ensure the Home page title matches the expected string.
+
+  Preconditions:
+  User is on the Home page.
+
+  Test Steps:
+      Navigate to the Home page.
+      Locate the page title at the top of the content area.
+
+  Expected Result:
+  The title text should be exactly "Welcome to the sweet shop!".`
+
+TC 3.1.3 Verify the page contains the correct description text
+  Test Summary:
+  Ensure the Home page includes a relevant and visible description below the title.
+
+  Preconditions:
+  User is on the Home page.
+
+  Test Steps:
+      Navigate to the Home page.
+      Locate the description text under the main title.
+  Expected Result:
+  A clearly visible and relevant description of the sweet shop is displayed.
+
+TC 3.1.4 Verify the banner is visible and matches the 2018 design/logo
+  Test Summary:
+  Ensure the banner is present and matches the approved 2018 version.
+
+  Preconditions:
+  User is on the Home page.
+
+  Test Steps:
+      Navigate to the Home page.
+      Locate the banner section.
+      Compare the displayed banner to the 2018 design/logo reference.
+  Expected Result:
+  The banner is clearly visible and matches the 2018 design/logo.
+
+TC 3.1.5 Verify advertising elements are visible on the page
+  Test Summary:
+  Ensure promotional or advertising elements are displayed on the Home page.
+
+  Preconditions:
+  User is on the Home page.
+
+  Test Steps:
+      Navigate to the Home page.
+      Look for banner ads, promotional cards, or other marketing visuals.
+  Expected Result:
+  Advertising elements are visible and clearly distinguishable from regular content.
+
+TC 3.2.1 Verify the header contains links labeled “Sweets”, “About”, “Login”, and “Basket”
+  Test Summary:
+  Ensure the header includes all primary navigation links.
+
+  Preconditions:
+  User is on the Home page (or any page where the header is expected to be consistent).
+
+  Test Steps:
+    Navigate to the Home page.
+    Locate the header section of the page.
+    Confirm the presence of navigation links labeled:
+      “Sweets”
+      “About”
+      “Login”
+      “Basket”
+
+  Expected Result:
+  All four navigation links are present in the header and correctly labeled.
+
+TC 3.2.2 Verify clicking each navigation link redirects to the correct page
+  Test Summary:
+  Ensure each header link navigates to its intended destination.
+
+  Preconditions:
+  User is on the Home page.
+
+  Test Steps:
+    Click on the “Sweets” link.
+    Verify the page navigates to the Browse Sweets page.
+    Return to the Home page.
+    Click on the “About” link.
+    Verify the page navigates to the About page.
+    Return to the Home page.
+    Click on the “Login” link.
+    Verify the page navigates to the Login page.
+    Return to the Home page.
+    Click on the “Basket” link.
+    Verify the page navigates to the Basket page.
+
+  Expected Result:Each link redirects the user to the correct corresponding page:
+  “Sweets” → Browse Sweets
+  “About” → About
+  “Login” → Login
+  “Basket” → Basket
+
+
+TC 3.3.1 Verify the 'Browse sweets' button is visible and clickable
+  Test Summary:
+  Ensure the 'Browse sweets' button appears on the Home page and can be interacted with.
+
+  Preconditions:
+  User is on the Home page.
+
+  Test Steps:
+    Locate the 'Browse sweets' button.
+    Check if the button is visible and not disabled.
+    Attempt to click the button.
+
+  Expected Result:
+  The 'Browse sweets' button is visible and clickable.
+
+TC 3.3.2 Verify clicking the 'Browse sweets' button navigates to the Browse Sweets page
+  Test Summary:
+  Ensure the 'Browse sweets' button redirects the user to the correct page.
+
+  Preconditions:
+  User is on the Home page.
+
+  Test Steps:
+    Click on the 'Browse sweets' button.
+    Observe the page that loads after clicking.
+
+  Expected Result:
+  User is redirected to the Browse Sweets page.
+
+TC 3.3.3 Verify the 'most popular' container has a descriptive heading or text
+  Test Summary:
+  Ensure the 'most popular' section includes a heading or text to describe its content.
+
+  Preconditions:
+  User is on the Home page.
+
+  Test Steps:
+    Scroll to the 'most popular' section.
+    Check for a visible heading or text that describes the section.
+
+Expected Result:
+The section includes a clear heading or description (e.g., "Most Popular Sweets").
+
+TC 3.3.4 Verify the 'most popular' container displays product items (at least one item)
+  Test Summary:
+  Ensure the 'most popular' section shows one or more product items.
+
+  Preconditions:
+  User is on the Home page.
+
+  Test Steps:
+    Scroll to the 'most popular' section.
+    Count the number of product items displayed.
+
+  Expected Result:
+  At least one product item is visible in the 'most popular' section.
+
+
+
+TC 3.4.1 Verify the navigation links show appropriate feedback on slow network
+  Test Summary:
+  Ensure the application provides visual feedback (like a loading spinner) when navigating pages under slow network conditions.
+
+  Preconditions:
+  Simulated slow network (e.g., using browser dev tools).
+
+  Test Steps:
+      Set the network speed to "Slow 3G" using browser dev tools.
+      Click each navigation link in the header.
+      Observe any loading indicators or visual feedback during the navigation process.
+
+  Expected Result:
+  A loading spinner, skeleton UI, or some form of feedback is shown while the new page loads.
+
+TC 3.4.2 Verify the page handles missing banner image gracefully
+  Test Summary:
+  Check if the UI gracefully handles missing or broken banner image URLs.
+
+  Preconditions:
+  Banner image URL is intentionally broken or missing.
+
+  Test Steps:
+      Load the Home page with a broken banner image URL.
+      Observe the banner area.
+
+  Expected Result:
+  An appropriate alt text or fallback UI is displayed (e.g., placeholder image or message), and the layout does not break.
+
+TC 3.4.3 Verify the 'Browse sweets' button is disabled or hidden if there are no sweets available
+  Test Summary:
+  Ensure the system disables or hides the 'Browse sweets' button when the sweets list is empty.
+
+  Preconditions:
+  No sweets available in the system (simulate empty data state).
+
+  Test Steps:
+    Load the Home page with no sweets configured.
+    Locate the 'Browse sweets' button.
+
+  Expected Result:
+  The button is either hidden or visibly disabled and unclickable.
+
+TC 3.4.4 Verify that clicking broken or disabled links does not cause page crashes
+  Test Summary:
+  Ensure the system handles broken or inactive links gracefully without crashing.
+
+  Preconditions:
+  Application contains a broken or intentionally disabled navigation link.
+
+  Test Steps:
+    Click on a broken or disabled link (if present).
+    Observe system behavior.
+
+  Expected Result:
+  No JavaScript errors, blank screens, or crashes occur. The application handles the event gracefully (e.g., stays on the current page or shows an error message).
+
+TC 3.5.1 From Home page, navigate to Login page → perform successful login → confirm redirection back to Home
+  Test Summary:
+  Verify the login workflow from the Home page redirects back to Home upon successful authentication.
+
+  Preconditions:
+  User is on the Home page and has valid login credentials.
+
+  Test Steps:
+      Click on the “Login” link in the header.
+      On the Login page, enter valid credentials and submit the form.
+      Observe the redirection behavior after login.
+
+  Expected Result:
+  User is successfully logged in and redirected back to the Home page.
+
+TC 3.5.2 Add item from 'most popular' container → verify basket counter updates
+  Test Summary:
+  Ensure that adding a product from the 'most popular' section updates the basket counter.
+
+  Preconditions:
+  User is on the Home page with at least one item listed under 'most popular'.
+
+  Test Steps:
+      Scroll to the 'most popular' section.
+      Click on “Add to Basket” for any product.
+      Observe the basket counter in the header.
+
+  Expected Result:
+  The basket counter increments by 1.
+
+TC 3.5.3 Navigate to Basket page → verify added items are present
+  Test Summary:
+  Verify that items added from the Home page appear correctly in the Basket page.
+
+  Preconditions:
+  User has added one or more items to the basket.
+
+  Test Steps:
+      Click on the “Basket” link in the header.
+      On the Basket page, review the list of items.
+
+  Expected Result:
+  Previously added items are displayed in the basket with correct quantity and details.
+
+
+
+
+
+
+  TC 4.1.1 – Check page has header, body, and footer
+
+Test Summary:
+Verify that the Basket page includes standard layout components: header, body, and footer.
+
+Preconditions:
+User is on the Basket page.
+
+Test Steps:
+
+    Navigate to the Basket page.
+
+    Check that the header is present.
+
+    Check that the body content is visible.
+
+    Check that the footer is displayed at the bottom of the page.
+
+Expected Result:
+Header, body, and footer are all present and correctly rendered.
+TC 4.1.2 – Check page title is “Your Basket”
+
+Test Summary:
+Ensure the Basket page displays the correct page title.
+
+Preconditions:
+User is on the Basket page.
+
+Test Steps:
+
+    Look at the main heading at the top of the page.
+
+    Verify that it says “Your Basket”.
+
+Expected Result:
+Page title is “Your Basket”.
+TC 4.1.3 – Check page has basket description text
+
+Test Summary:
+Confirm that the page includes description text explaining the purpose of the page.
+
+Preconditions:
+User is on the Basket page.
+
+Test Steps:
+
+    Locate the text under the “Your Basket” title.
+
+    Read and verify that it provides a helpful description of what to do next.
+
+Expected Result:
+The description text is visible and provides guidance.
+TC 4.1.4 – Verify Billing Address Form
+
+Test Summary:
+Ensure the Billing Address section contains all necessary input fields and dropdowns.
+
+Preconditions:
+User is on the Basket page.
+
+Test Steps:
+
+    Scroll to the Billing Address section.
+
+    Confirm the following fields are present:
+
+        First name, Last name, Email, Address, Address 2 (Optional), Zip
+
+        Dropdowns: Country, City
+
+Expected Result:
+All listed fields are visible and accessible.
+TC 4.1.5 – Verify Payment Form fields
+
+Test Summary:
+Check that the Payment section includes all required inputs.
+
+Preconditions:
+User is on the Basket page.
+
+Test Steps:
+
+    Locate the Payment section.
+
+    Verify presence of:
+
+        Name on card, Credit card number, Expiration, CVV
+
+Expected Result:
+All payment fields are correctly displayed.
+TC 4.1.6 – Verify Basket Summary when Empty
+
+Test Summary:
+Ensure the basket summary shows zero items and £0.00 total when empty.
+
+Preconditions:
+Basket is empty.
+User is on the Basket page.
+
+Test Steps:
+
+    Look at the basket summary on the right.
+
+    Verify it shows 0 items and a total of £0.00.
+
+Expected Result:
+Counter = 0, Total = £0.00.
+TC 4.1.8 – Check Standard Shipping updates total by £1.99
+
+Test Summary:
+Ensure selecting Standard Shipping adds £1.99 to the basket total.
+
+Preconditions:
+Basket contains at least one item.
+User is on the Basket page.
+
+Test Steps:
+
+    Note current basket total.
+
+    Select “Standard Shipping (£1.99)”.
+
+    Verify updated total reflects additional £1.99.
+
+Expected Result:
+Total increases by £1.99.
+TC 4.1.9 – Check Promo Code textbox is visible
+
+Test Summary:
+Verify that the Promo Code textbox is displayed.
+
+Preconditions:
+User is on the Basket page.
+
+Test Steps:
+
+    Locate the promo code section.
+
+    Check that the input textbox is visible.
+
+Expected Result:
+Promo Code textbox is present and editable.
+TC 4.1.10 – Check Redeem button applies code
+
+Test Summary:
+Ensure the "Redeem" button applies the entered promo code.
+
+Preconditions:
+Valid promo code is available.
+User is on the Basket page.
+
+Test Steps:
+
+    Enter a valid promo code in the textbox.
+
+    Click the “Redeem” button.
+
+    Observe if discount is applied.
+
+Expected Result:
+Promo code is applied and total updates correctly.
+TC 4.1.11 – Check Empty Basket button clears items
+
+Test Summary:
+Ensure the “Empty Basket” button removes all items from the basket.
+
+Preconditions:
+Basket has at least one item.
+User is on the Basket page.
+
+Test Steps:
+
+    Click the “Empty Basket” link/button.
+
+    Check that the basket summary shows 0 items and £0.00.
+
+Expected Result:
+All items are removed, basket is empty.
+TC 4.1.12 – Check Continue to Checkout button
+
+Test Summary:
+Ensure the “Continue to checkout” button is present and clickable.
+
+Preconditions:
+User is on the Basket page.
+
+Test Steps:
+
+    Locate the blue “Continue to checkout” button.
+
+    Check if it is enabled and can be clicked.
+
+Expected Result:
+Button is visible and functional.
+
+
+
+
+
+
+
+
+
+
+4 Basket Functionality
+
+TC 4.1.1 – Check page has header, body, and footer
+  Test Summary:
+  Verify that the Basket page includes standard layout components: header, body, and footer.
+
+  Preconditions:
+  User is on the Basket page.
+
+  Test Steps:
+      Navigate to the Basket page.
+      Check that the header is present.
+      Check that the body content is visible.
+      Check that the footer is displayed at the bottom of the page.
+
+  Expected Result:
+  Header, body, and footer are all present and correctly rendered.
+
+TC 4.1.2 – Check page title is “Your Basket”
+  Test Summary:
+  Ensure the Basket page displays the correct page title.
+
+  Preconditions:
+  User is on the Basket page.
+
+  Test Steps:
+      Look at the main heading at the top of the page.
+      Verify that it says “Your Basket”.
+
+  Expected Result:
+  Page title is “Your Basket”.
+
+TC 4.1.3 – Check page has basket description text
+  Test Summary:
+  Confirm that the page includes description text explaining the purpose of the page.
+
+  Preconditions:
+  User is on the Basket page.
+
+  Test Steps:
+      Locate the text under the “Your Basket” title.
+      Read and verify that it provides a helpful description of what to do next.
+
+  Expected Result:
+  The description text is visible and provides guidance.
+
+TC 4.1.4 – Verify Billing Address Form
+  Test Summary:
+  Ensure the Billing Address section contains all necessary input fields and dropdowns.
+
+  Preconditions:
+  User is on the Basket page.
+
+  Test Steps:
+      Scroll to the Billing Address section.
+      Confirm the following fields are present:
+          First name, Last name, Email, Address, Address 2 (Optional), Zip
+          Dropdowns: Country, City
+
+  Expected Result:
+  All listed fields are visible and accessible.
+
+TC 4.1.5 – Verify Payment Form fields
+  Test Summary:
+  Check that the Payment section includes all required inputs.
+
+  Preconditions:
+  User is on the Basket page.
+
+  Test Steps:
+    Locate the Payment section.
+    Verify presence of:
+      Name on card, Credit card number, Expiration, CVV
+
+Expected Result:
+All payment fields are correctly displayed.
+
+TC 4.1.6 – Verify Basket Summary when Empty
+  Test Summary:
+  Ensure the basket summary shows zero items and £0.00 total when empty.
+
+  Preconditions:
+  Basket is empty.
+  User is on the Basket page.
+
+  Test Steps:
+    Look at the basket summary on the right.
+    Verify it shows 0 items and a total of £0.00.
+
+  Expected Result:
+  Counter = 0, Total = £0.00.
+
+TC 4.1.8 – Check Standard Shipping updates total by £1.99
+
+Test Summary:
+  Ensure selecting Standard Shipping adds £1.99 to the basket total.
+
+  Preconditions:
+  Basket contains at least one item.
+  User is on the Basket page.
+
+  Test Steps:
+      Note current basket total.
+      Select “Standard Shipping (£1.99)”.
+      Verify updated total reflects additional £1.99.
+
+  Expected Result:
+  Total increases by £1.99.
+
+TC 4.1.9 – Check Promo Code textbox is visible
+  Test Summary:
+  Verify that the Promo Code textbox is displayed.
+
+  Preconditions:
+  User is on the Basket page.
+
+  Test Steps:
+      Locate the promo code section.
+      Check that the input textbox is visible.
+
+  Expected Result:
+  Promo Code textbox is present and editable.
+
+TC 4.1.10 – Check Redeem button applies code
+  Test Summary:
+  Ensure the "Redeem" button applies the entered promo code.
+
+  Preconditions:
+  Valid promo code is available.
+  User is on the Basket page.
+
+  Test Steps:
+      Enter a valid promo code in the textbox.
+      Click the “Redeem” button.
+      Observe if discount is applied.
+
+  Expected Result:
+  Promo code is applied and total updates correctly.
+
+TC 4.1.11 – Check Empty Basket button clears items
+  Test Summary:
+  Ensure the “Empty Basket” button removes all items from the basket.
+
+  Preconditions:
+  Basket has at least one item.
+  User is on the Basket page.
+
+  Test Steps:
+      Click the “Empty Basket” link/button.
+      Check that the basket summary shows 0 items and £0.00.
+
+  Expected Result:
+  All items are removed, basket is empty.
+
+TC 4.1.12 – Check Continue to Checkout button
+  Test Summary:
+  Ensure the “Continue to checkout” button is present and clickable.
+
+  Preconditions:
+  User is on the Basket page.
+
+  Test Steps:
+      Locate the blue “Continue to checkout” button.
+      Check if it is enabled and can be clicked.
+
+  Expected Result:
+  Button is visible and functional.
+
+TC 4.2.1 – Add a product to the basket
+  Test Summary:
+  Verify that clicking "Add to Basket" adds one product and updates basket counter.
+
+  Preconditions:
+  User is on the Browse Sweets page.
+
+  Test Steps:
+      Click "Add to Basket" on one product.
+      Check the basket icon counter updates to 1.
+      Open the Basket page and verify the item is listed.
+
+  Expected Result:
+  Item is added and shown in the basket.
+
+TC 4.2.2 – Add multiple quantities of the same product
+  Test Summary:
+  Ensure multiple clicks of "Add to Basket" on the same item increase its quantity.
+
+  Preconditions:
+  User is on the Browse Sweets page.
+
+  Test Steps:
+      Click “Add to Basket” on the same product multiple times (e.g. 3 times).
+      Go to the Basket page.
+      Confirm quantity of the item is 3.
+
+  Expected Result:
+  Item quantity is shown as 3 in the basket.
+
+TC 4.2.3 – Add multiple different products
+  Test Summary:
+  Verify that different products can be added and listed in the basket.
+
+  Preconditions:
+  User is on the Browse Sweets page.
+
+  Test Steps:
+      Add three different items to the basket.
+      Navigate to the Basket page.
+      Confirm all three items appear.
+
+  Expected Result:
+  All different products are listed correctly.
+
+TC 4.2.4 – Confirm total price updates correctly
+  Test Summary:
+  Ensure that the total in the basket reflects prices of all items + shipping/promo if applicable.
+
+  Preconditions:
+  Basket contains multiple items.
+
+  Test Steps:
+    Add items with known prices.
+    Calculate expected total manually.
+    Compare with total displayed on the Basket page.
+
+  Expected Result:
+  Displayed total matches expected total.
+
+TC 4.2.5 – Remove a product from the basket
+  Test Summary:
+  Verify that removing an item updates the list and total price.
+
+  Preconditions:
+  Basket contains at least one product.
+
+  Test Steps:
+    Remove an item from the basket.
+    Confirm that it no longer appears in the basket.
+    Confirm total is updated.
+
+  Expected Result:
+  Item is removed and total reflects the change.
+
+TC 4.2.6 – Verify checkout summary matches basket contents
+  Test Summary:
+  Ensure the checkout summary matches what's listed in the basket.
+
+  Preconditions:
+  User has items in the basket and continues to checkout.
+
+  Test Steps:
+      Add products to basket.
+      Click “Continue to checkout”.
+      Confirm items and quantities match those from basket summary.
+
+  Expected Result:
+  Checkout summary mirrors the basket’s items and totals.

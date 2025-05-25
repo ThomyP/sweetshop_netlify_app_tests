@@ -1,17 +1,17 @@
 # Sweet Shop test cases https://sweetshop.netlify.app/
 
 ## Sweet Shop - About Page Test Cases
-  ### 1.1 Page Content Tests
+### 1.1 Page Content Tests
   - **1.1.1** Check the page has title 'Sweet Shop Project'
   - **1.1.2** Check the page has the description
   - **1.1.3** Check the page has the banner and it matches 2018
   
 ## Sweet Shop - Login Page Test Cases
-  ### 2.1 Page Load Tests
+### 2.1 Page Load Tests
   - **2.1.1** Check 'Login' title and description
   - **2.1.2** Check the page has 'username' and 'password' textboxes
 
-  ### 2.2 Login Functionality Tests
+### 2.2 Login Functionality Tests
   - **2.2.1** Successful login scenario
   - **2.2.2** Unsuccessful login scenario
     
@@ -69,7 +69,7 @@
   - **4.1.11** – Check **“Empty Basket”** button clears basket items
   - **4.1.12** – Check **“Continue to checkout”** button is visible and clickable
   
-  ### 4.2 Basket Functionality
+### 4.2 Basket Functionality
 
   - **4.2.1** – Add a product to the basket  
   - **4.2.2** – Add multiple quantities of the same product  
