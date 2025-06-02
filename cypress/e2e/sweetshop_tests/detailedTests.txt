@@ -1,5 +1,4 @@
 
-
 1. About page tests
 
   TC 1.1.1 – Check the page has title 'Sweet Shop Project'
@@ -18,8 +17,8 @@
     User is on the About page.
 
     Test Steps:
-        Locate the description section below the page title.
-        Observe the text content.
+      Locate the description section below the page title.
+      Observe the text content.
 
     Expected Result:
     The page displays a relevant and visible description of the Sweet Shop.
@@ -30,8 +29,8 @@
     User is on the About page.
 
     Test Steps:
-        Scroll to the banner section of the page.
-        Compare the displayed banner with the 2018 design reference.
+      Scroll to the banner section of the page.
+      Compare the displayed banner with the 2018 design reference.
 
     Expected Result:
     The banner is visible and matches the 2018 design/logo.
@@ -39,12 +38,13 @@
   TC 1.1.4 – Verify navbar elements are visible on the About page
 
     Preconditions:
-    User is logged in and on the "Your Account" page.
+    User is on the About page.
 
     Test Steps:
       Inspect the navigation bar at the top of the page.
       Verify the presence and visibility of the following elements:
         Logo, "Sweet Shop", "Sweets", "About", "Login"  and "Basket" links
+        basket index is visible number is show
 
     Expected Result:
     All listed navbar elements are present and visible.
@@ -53,27 +53,26 @@
  
     Preconditions:
     User is on the About page.
-    
-    Test Steps:
-      Click on the Sweet Shop logo.
-      Verify the page navigates to the Home page.
-      Navigate back to the About page.
-      Click on the Sweets link.
-      Verify the page navigates to the Browse Sweets page.
-      Navigate back to the About page.
-      Click on the Login link.
-      Verify the page navigates to the Login page.
-      Navigate back to the About page.
-      Click on the Basket link.
 
-    Verify the page navigates to the Basket page.
+    Test steps
+    Click on the Sweet Shop logo (navbar brand).
+      Verify the user is redirected to the Home page.
+    Navigate back to the About page.
+    Click on the Sweets link in the header.
+      Verify the user is redirected to the Browse Sweets page.
+    Navigate back to the About page.
+    Click on the Login link in the header.
+      Verify the user is redirected to the Login page.
+    Navigate back to the About page.
+    Click on the Basket link in the header.
+      Verify the user is redirected to the Basket page.
 
     Expected Result:
     Each link redirects the user to the correct corresponding page:
-        Logo → Home page
-        “sweets” → Browse sweets
-        “Login” → Login page
-        “Basket” → Basket page
+        Logo → Home page (.advertising is visible)
+        Sweets → Browse Sweets page (#navbarColor01 is visible)
+        Login → Login page (Login heading is visible)
+        Basket → Basket page (Your Basket heading is visible)
 
 2. Login page tests
   TC 2.1.1 – Check 'Login' page has title 'Login'
@@ -106,11 +105,12 @@
     Test Steps:
       Locate the page description text.
       Identify the words "email address" and "password" within the description.
-      Hover the cursor over "email address".
-      Hover the cursor over "password".
+      Hover the cursor over "email address" for 2s and observe tooltip popup text
+      Hover the cursor over "password" for 2s and observe tooltip popup text
 
     Expected Result:
     Tooltips (question mark or popup box) appear when hovering over "email address" and "password"
+    showig text 'test"user.com and qwerty after hovering for 2 seconds
 
   TC 2.1.4 – Confirm the presence of input fields: Email address textbox (pre-filled with "you@example.com"). Password textbox (labeled "Password").
 
@@ -147,9 +147,10 @@
       Inspect the navigation bar at the top of the page.
       Verify the presence and visibility of the following elements:
         Logo, "Sweet Shop", "Sweets", "About", "Login"  and "Basket" links
+        basket index is visible number is show
 
     Expected Result:
-    All listed navbar elements are present and visible.
+    All listed navbar elements are present and visible
 
   TC 2.1.7 – Verify all social media icons are visible
 
@@ -191,7 +192,7 @@
     Expected Result:
     Typed characters are masked and appear as dots (••••); not displayed in plain text.
 
-  TC 2.2.2 – Successful login valid email + password → Redirect to 'Your Account' page.
+  TC 2.2.2 – Successful login with valid email credentials
 
     Preconditions:
     User is on the Login page.
@@ -206,13 +207,13 @@
     Expected Result:
     User is successfully logged in and redirected to 'your Account' page.
 
-  TC 2.2.3 – Unsuccessful login with invalid email format
+  TC 2.2.3 – Unsuccessful login with invalid email format (user@)
 
     Preconditions:
     User is on the Login page.
 
     Test Steps:
-      Enter an invalid email format (e.g., user@, user.com, user@.com).
+      Enter an invalid email format user@ 
       Enter a valid password.
       Click the "Login" button.
 
@@ -220,7 +221,41 @@
     User is not logged in.
     An error message is shown: "Please enter a valid email address" or equivalent.
 
-  TC 2.2.4 – Unsuccessful login with empty email field
+    Status:  FAIL 
+
+  TC 2.2.4. – Unsuccessful login with invalid email format (user.com)
+
+    Preconditions:
+    User is on the Login page.
+
+    Test Steps:
+      Enter an invalid email format user.com 
+      Enter a valid password.
+      Click the "Login" button.
+
+    Expected Result:
+    User is not logged in.
+    An error message is shown: "Please enter a valid email address" or equivalent.
+
+    Status: PASS
+
+  TC 2.2.5. – Unsuccessful login with invalid email format (user@.com)
+
+    Preconditions:
+    User is on the Login page.
+
+    Test Steps:
+      Enter an invalid email format user@.com 
+      Enter a valid password.
+      Click the "Login" button.
+
+    Expected Result:
+    User is not logged in.
+    An error message is shown: "Please enter a valid email address" or equivalent.
+
+    Status: FAIL
+
+  TC 2.2.6 – Unsuccessful login with empty email field
 
     Preconditions:
     User is on the Login page.
@@ -234,7 +269,7 @@
     User is not logged in.
     An error message is displayed: "Please enter a valid email address. "
 
-  TC 2.2.5 – Unsuccessful login with empty password field
+  TC 2.2.7 – Unsuccessful login with empty password field
 
     Preconditions:
     User is on the Login page.
@@ -248,7 +283,7 @@
     User is not logged in.
     An error message is displayed: "Please enter a valid password."
 
-  TC 2.2.6 – Unsuccessful login with both email and password fields empty
+  TC 2.2.8 – Unsuccessful login with both email and password fields empty
 
     Preconditions:
     User is on the Login page.
@@ -259,9 +294,9 @@
 
     Expected Result:
     User is not logged in.
-    Error messages are shown for both fields, e.g., "Email is required", "Password is required".
+    Error messages are shown for both fields, 'Please enter a valid email address' and 'Please enter a valid password'.
 
-  TC 2.2.7 – Unsuccessful login with password too short (less than 5 characters)
+  TC 2.2.9 – Unsuccessful login scenario password to short (7 symobls)
 
     Preconditions:
     User is on the Login page.
@@ -275,7 +310,9 @@
     User is not logged in.
     An error message is displayed: "Please enter a valid password. " or equivalent.
 
-  TC 2.3.1 – Confirm 'X' icon redirects to X.com
+    Status: FAIL
+  
+  TC 2.2.10 – Confirm 'X' icon redirects to X.com/Login
 
     Preconditions:
     User is on the Login page.
@@ -285,9 +322,11 @@
       Observe the redirection behavior.
 
     Expected Result:
-    User is redirected to https://x.com/sweetshop
+    User is redirected to x.com/i/flow/login
 
-  TC 2.3.2 – Confirm 'FB' icon redirects to facebook.com
+    Status FAIL
+
+  TC 2.2.11 – Confirm 'FB' icon redirects to facebook.com/Login
 
     Preconditions:
     User is on the Login page.
@@ -297,9 +336,11 @@
         Observe the redirection behavior.
 
     Expected Result:
-    User is redirected to https://www.facebook.com/sweetshop
+    User is redirected to https://www.facebook.com/login
 
-  TC 2.3.3 – Confirm 'Li' icon redirects to linkedin.com
+    Status FAIL
+ 
+  TC 2.2.12 – Confirm 'Li' icon redirects to linkedin.com/Login
 
     Preconditions:
     User is on the Login page.
@@ -309,8 +350,10 @@
         Observe the redirection behavior.
 
     Expected Result:
-    User is redirected to https://www.linkedin.com/sweetshop
+    User is redirected to https://www.linkedin.com/login
 
+    Status FAIL
+  
   TC 2.3.1 – Verify clicking each navigation link redirects to the correct page from the Login page
     Test Summary:
     Ensure all available header links on the Login page navigate to their correct destinations.
@@ -319,23 +362,27 @@
     User is on the Login page.
 
     Test Steps:
-      Click on the Sweet Shop logo.
-      Verify the page navigates to the Home page.
-      Navigate back to the Login page.
-      Click on the About link.
-      Verify the page navigates to the About page.
-      Navigate back to the Login page.
-      Click on the Sweets link.
-      Verify the page navigates to the Browse Sweets page.
-      Navigate back to the Login page.
-      Click on the Basket link
-      Verify the page navigates to the Basket page.
+    Click on the Sweet Shop logo (navbar brand).
+      Verify the user is redirected to the Home page.
+    Navigate back to the Login page.
+    Click on the Sweets link in the header.
+      Verify the user is redirected to the Browse Sweets page.
+    Navigate back to the Login page.
+    Click on the About link in the header.
+      Verify the user is redirected to the About page.
+    Navigate back to the Login page.
+    Click on the Login link in the header.
+        Verify the user stays on (or returns to) the Login page.
+    Click on the Basket link in the header.
+      Verify the user is redirected to the Basket page.
 
     Expected Result:
     Each link redirects the user to the correct corresponding page:
-      “About” → About page
-      Logo → Home page
-      “Basket” → Basket page
+    Logo → Home page (.advertising is visible)
+    “Sweets” → Sweets page (Browse sweets is visible)
+    “About” → About page (Sweet Shop Project heading is visible)
+    “Login” → Login page (Login heading is visible)
+    “Basket” → Basket page (Your Basket heading is visible)
 
 3. Your Account tests
 
@@ -346,100 +393,87 @@
 
     Test Steps:
       Inspect the navigation bar at the top of the page.
-
       Verify the presence and visibility of the following elements:
-          Logo, "Sweet Shop", "Sweets", "About", "Login"  and "Basket" links
+        Logo, "Sweet Shop", "Sweets", "About", "Login"  and "Basket" links
+        basket index is visible number is show
 
     Expected Result:
     All listed navbar elements are present and visible.
 
   TC 3.1.2 – Verify the page title is "Your Account"
-    Test Summary:
-    Ensure the correct title is displayed on the Your Account page.
-
     Preconditions:
     User is logged in and on the "Your Account" page.
 
     Test Steps:
-        Check the title at the top of the content area.
-        Confirm it reads "Your Account".
+      Check the title at the top of the content area.
+      Confirm it reads "Your Account".
 
     Expected Result:
     The page displays the title "Your Account".
 
   TC 3.1.3 – Verify the welcome message displays the user’s email
-    Test Summary:
-    Ensure the user’s email is correctly shown in the welcome message.
 
     Preconditions:
     User is logged in and on the "Your Account" page.
 
     Test Steps:
-        Look for a message that starts with "Welcome back".
-        Verify that the message includes the logged-in user’s email (e.g., test@user.com).
+      Look for a message that starts with "Welcome back".
+      Verify that the message includes the logged-in user’s email (e.g., test@user.com).
 
     Expected Result:
     The welcome message is visible and displays the correct user email.
 
   TC 3.1.4 – Verify the "Previous Orders Table" title is visible
-    Test Summary:
-    Ensure the title for the order history section is shown clearly.
 
     Preconditions:
     User is on the "Your Account" page.
 
     Test Steps:
-        Locate the previous orders section.
-        Confirm the presence and visibility of the title "Previous Orders Table".
+      Locate the previous orders section.
+      Confirm the presence and visibility of the title "Previous Orders Table".
 
     Expected Result:
     The title "Previous Orders Table" is present and visible.
 
   TC 3.1.5 – Confirm table columns are present
-    Test Summary:
-    Ensure all necessary order table columns are displayed.
 
     Preconditions:
     User is on the "Your Account" page.
 
     Test Steps:
-        Locate the orders table.
+      Locate the orders table.
 
-        Confirm the table headers include:
-            Order Number
-            Date Ordered
-            Order Description
-            Order Total
+      Confirm the table headers include:
+        Order Number
+        Date Ordered
+        Order Description
+        Order Total
 
     Expected Result:
     All expected columns are present in the orders table.
 
   TC 3.1.6 – Validate specific order data
-    Test Summary:
-    Ensure specific orders and their totals are correctly displayed.
-
+ 
     Preconditions:
     User has order history displayed on the "Your Account" page.
 
     Test Steps:
-        Check for the following rows in the orders table:
-            Order #1: "Swansea Mixture x 1", Total = £1.50
-            Order #2: "Sherbert Straws x 1", Total = £0.75
-            Order #3: "Chocolate Cups + Swansea Mixture", Total = £8.00
+      Check for the following rows in the orders table:
+        Order #1: "Swansea Mixture x 1", Total = £1.50
+        Order #2: "Sherbert Straws x 1", Total = £0.75
+        Order #3: "Chocolate Cups + Swansea Mixture", Total = £8.00
 
     Expected Result:
     All three orders are displayed with correct descriptions and totals.
 
   TC 3.1.7 – Verify order dates are in readable format
-    Test Summary:
-    Ensure date formatting is user-friendly and consistent.
 
     Preconditions:
     User is on the "Your Account" page.
 
     Test Steps:
-        Locate the "Date Ordered" column.
-        Confirm the format follows the readable structure, e.g., "11th Feb 2019".
+      Locate the "Date Ordered" column.
+      Confirm the format follows the readable structure, e.g., "11th Feb 2019".
 
     Expected Result:
     Dates are displayed in a consistent and readable format.
@@ -452,31 +486,25 @@
     User is on the "Your Account" page.
 
     Test Steps:
-        Scroll to the order breakdown chart section.
-        Confirm the title "Item Order Breakdown" is visible above the chart.
+      Scroll to the order breakdown chart section.
+      Confirm the title "Item Order Breakdown" is visible above the chart.
 
     Expected Result:
     The title "Item Order Breakdown" is clearly visible above the chart.
 
-  TC 3.1.9 – Verify chart contents and layout
-    Test Summary:
-    Confirm the order chart is correctly displayed with appropriate labels and structure.
-
+  TC 3.1.9 – 'Item Order Breakdown' Chart canvas renders
+    
     Preconditions:
     User is on the "Your Account" page.
 
-    Test Steps:
+    Test Steps
+      Locate the chart canvas element with the ID transactionChart on the page.
+      Verify that the chart canvas is visible.
+       Verify that the canvas element has a valid 2D rendering context.
 
-        Locate the chart under the "Item Order Breakdown" section.
-
-        Confirm the following elements:
-            Title: "# of Items Ordered" is visible
-            Month labels: e.g., February, July, December are displayed
-            Chart type is rendered (e.g., bar chart or line chart)
-            Y-axis contains numerical values (e.g., 0, 1, 2...)
-
-    Expected Result:
-    The chart is rendered correctly with all required visual elements.
+    Expected Result
+    The chart canvas element is present and visible on the page.
+    The canvas element has a valid 2D rendering context (optional).
 
   TC 3.1.10 – Check the page has the banner and it matches 2018
 
@@ -491,19 +519,19 @@
     The banner is visible and matches the 2018 design/logo.
 
   TC 3.2.1 – Verify sorting by "Order Number" (descending)
-    Test Summary:
-    Ensure clicking on the "Order Number" column header sorts the table in descending order.
 
     Preconditions:
     User is on the "Your Account" page with multiple orders listed.
 
     Test Steps:
-        Click on the "Order Number" column header.
-        Observe the order of rows.
+      Click on the "Order Number" column header.
+      Observe the order of rows.
 
     Expected Result:
     Orders are sorted from highest to lowest number (e.g., #3 → #1).
 
+    Status Fail // single click does not change order numbers order
+  
   TC 3.2.2 – Verify sorting by "Date Ordered" (descending)
     Test Summary:
     Ensure clicking the "Date Ordered" column header sorts orders from most recent to oldest.
@@ -519,22 +547,20 @@
     Orders are sorted by most recent date first.
 
   TC 3.2.3 – Verify sorting by "Order Description" (Z → A)
-    Test Summary:
-    Ensure clicking on the "Order Description" column header sorts orders alphabetically in reverse order.
 
     Preconditions:
     User is on the "Your Account" page with multiple orders listed.
 
     Test Steps:
-        Click on the "Order Description" column header.
-        Check the order of product descriptions.
+      Click on the "Order Description" column header.
+      Check the order of product descriptions.
 
     Expected Result:
     Orders are sorted alphabetically in descending (Z → A) order.
 
+    Status FAIL bug: incorest sorting swansea mixture before sherber straws
+  
   TC 3.2.4 – Verify sorting by "Order Total" (high → low)
-    Test Summary:
-    Ensure the table sorts by total amount spent in descending order.
 
     Preconditions:
     User is on the "Your Account" page with multiple orders listed.
@@ -546,110 +572,38 @@
     Expected Result:
     Orders are sorted by highest total to lowest.
 
-  TC 3.2.5 – Verify chart tooltip appears on hover
-    Test Summary:
-    Ensure hovering over chart bars or data points reveals detailed tooltips.
+  TC 3.2.5 – Verify "Delete Item" functionality updates count and retains remaining items
 
     Preconditions:
-    User is on the "Your Account" page and chart is visible.
+    Basket is empty
 
     Test Steps:
-        Hover over a data point or bar on the chart.
-        Observe if a tooltip appears.
-        Confirm it shows:
-            Month
-            Color
-            Exact item count
-
-    Expected Result:
-    Tooltip appears and contains accurate details when hovering.
-
-  TC 3.2.6 – Verify chart resets and axis updates on title click
-    Test Summary:
-    Ensure clicking the "# of Items Ordered" title resets the chart and updates Y-axis formatting.
-
-    Preconditions:
-    User is on the "Your Account" page with chart visible.
-
-    Test Steps:
-        Click on the chart title "# of Items Ordered".
-        Observe the chart.
-
-        Check if:
-            Chart content is cleared or reset
-            Y-axis updates to new scale (e.g., 0.1, 0.2...1)
-
-    Expected Result:
-    Chart resets and the Y-axis is reformatted accordingly.
-
-  TC 3.2.7 – Verify "Delete Item" functionality updates count and retains remaining items
-    Test Summary:
-    Ensure that removing an item from the basket updates the count correctly without affecting other items.
-
-    Preconditions:
-    User has multiple items in their basket.
-
-    Test Steps:
-        Click on the "Delete Item" button next to one product.
-        Observe basket count and product list.
+      from Sweets apage add 2 items to the basket
+      Click 'Login' and login with valid user details
+      Observe basket item counter in navigation and confirm 2 is shown
+      Click on the "Delete Item" button next to one product.
+      Observe basket count and product list.
 
     Expected Result:
     Item is removed, basket count is updated, and remaining items stay unaffected.
 
-  TC 3.2.8 – Verify "Delete Item" hover effect
-  Test Summary:
-  Ensure a visual cue (e.g., color change, underline) is displayed when hovering over the "Delete Item" button.
-
-  Preconditions:
-  User has at least one item in their basket.
-
-  Test Steps:
-      Hover over the "Delete Item" button.
-      Observe any visual changes to the button.
-
-  Expected Result:
-  Button changes style (e.g., underline, color) on hover.
-
-  TC 3.3.1 – Verify clicking each navigation link redirects to the correct page from the Login page
+  TC 3.3.1 – Verify clicking each navigation link redirects to the correct page from the Your account page
 
     Preconditions:
     User has a valid account (email & password).
 
     Test Steps:
-        Navigate to the Login page.
-        Enter valid email and password.
-        Click the Login button.
-        Confirm the "Your Account" page is displayed.
-        Click the "Browse Sweets" link.
-        Verify redirection to the Browse Sweets page and confirm title is "Browse sweets!".
-        Return to Login page to reset session.
-        Log in again with the same valid credentials.
-        Confirm the "Your Account" page is displayed.
-        Click the "Basket" link.
-        Verify redirection to the Basket page and confirm title is "Your Basket".
-        Return to Login page again.
-        Log in once more with valid credentials.
-        From the "Your Account" page, click the "About" link.
-        Verify redirection to the About page and confirm title is "Sweet Shop Project".
-        Return to Login page again.
-        Log in once more with valid credentials.
-        From the "Your Account" page, click the "Login" link.
-        Verify redirection to the About page and confirm title is "Login".
-        Return to Login page again.
-        Log in once more with valid credentials.
-        From the "Your Account" page, click the "Sweet Shop" link.
-        Verify redirection to the Home page and confirm title is "Welcome to the sweet shop!".
+      Log in.
+      Navigates from "Your Account" page using each nav link.
+      Verifies each redirect + title.
+      Logs in again after each navigation (to simulate session reset).
 
     Expected Result:
-        Each navigation link from the "Your Account" page successfully redirects to the correct page.
-        Page titles and content match expected values.
+      Each navigation link from the "Your Account" page successfully redirects to the correct page.
 
-        The “Your Account” page is not accessible again after navigation, unless the user logs in again.
+4. Home page Functionality
 
-4 Home page Functionality
   TC 4.1.1 – Verify the page title is exactly "Welcome to the sweet shop!"
-    Test Summary:
-    Ensure the Home page title matches the expected string.
 
     Preconditions:
     User is on the Home page.
@@ -666,8 +620,8 @@
     User is on the Home page.
 
     Test Steps:
-        Navigate to the Home page.
-        Locate the description text under the main title.
+      Locate the description text under the main title.
+      Make sure th description is relevant to page
 
     Expected Result:
     A clearly visible and relevant description of the sweet shop is displayed.
@@ -692,12 +646,12 @@
     User is on the Home page.
 
     Test Steps:
-        Look for banner ads, or other marketing visuals and confirm they are visible.
+      Look for banner ad and confirm it is visible.
 
     Expected Result:
     Advertising elements are visible and clearly distinguishable from regular content.
 
-  TC 4.1.5 – Verify 'Browse sweets' button is visible and chanages its color on hover
+  TC 4.1.5 – Verify 'Browse sweets' button is visible
     
     Preconditions:
     User is on the Home page
@@ -707,16 +661,38 @@
       Verify the button:
         Is clearly visible on the page
         Has text ("Browse sweets")
-      Hover over the button
-      Observe visual changes
-
+   
     Expected Result:
       Button is present and visible on page load
       Button text is readable (proper color contrast)
-      On hover:
-      Button color changesfrom blue to dark blue
 
-  TC 4.1.6 – Verify the 'most popular' container has a description
+   TC 4.1.6 – Verify the 'Most popular' container has a Title
+
+    Preconditions:
+    User is on the Home page.
+
+    Test Steps:
+      Observe 'most popular' section.
+      Check for a visible Title 'Most Popular'
+
+    Expected Result:
+    Title is visible and includes text 'Most popular'
+
+  TC 4.1.6 – Verify the 'Most popular' container has a Title
+
+    Preconditions:
+    User is on the Home page.
+
+    Test Steps:
+      Observe 'most popular' section.
+      Check for a visible Title 'Most Popular'
+
+    Expected Result:
+    Title is visible and includes text 'Most popular'
+
+    ---report bug title is not shown
+
+  TC 4.1.7 – Verify the 'most popular' container has a description
 
     Preconditions:
     User is on the Home page.
@@ -728,10 +704,8 @@
     Expected Result:
     The section includes a clear heading or description (e.g., "most popular choice").
 
-  TC 4.1.7 – Verify that all 4 product cards are displayed in 'most popular' category
-    Test Summary:
-    Ensure the 'most popular' section shows one or more product items.
-
+  TC 4.1.8 – Verify that all 4 product cards are displayed in 'most popular' category
+ 
     Preconditions:
     User is on the Home page.
 
@@ -742,7 +716,7 @@
     Expected Result:
     At least one product item is visible in the 'most popular' section.
 
-  TC 4.1.8 – Verify product cards display correct information
+  TC 4.1.9 – Verify product cards display correct information
     Preconditions:
       User is on the Home page.
       'Most popular' section is loaded.
@@ -762,21 +736,18 @@
         Description (e.g., "UFO's Sherbert Filled Flying Saucers").
         Price (e.g., "£0.75", "£1.00").
 
-  TC 4.1.9 – Verify 'Add to Basket' buttons are displayed and hover effect works
+  TC 4.1.10 – Verify 'Add to Basket' buttons are displayed
     
     Preconditions:
     User is on the homepage.
-    'Most popular' section is loaded.
 
     Test Steps:
-        Check that all 4 'Add to Basket' buttons are displayed.
-        Hover over each button.
+      Check that all 4 'Add to Basket' buttons are displayed.
 
     Expected Result:
-        All buttons are visible and clickable.
-        Buttons show visual feedback (e.g., color change) when hovered.
+    All buttons are visible 
 
-  TC 4.1.10 – Verify navbar elements are visible on the About page
+  TC 4.1.11 – Verify navbar elements are visible on the About page
 
     Preconditions:
     User is logged in and on the "Home" page.
@@ -790,8 +761,6 @@
     All listed navbar elements are present and visible.
 
   TC 4.2.1 – Verify clicking each navigation link redirects to the correct page
-    Test Summary:
-    Ensure each header link navigates to its intended destination.
 
     Preconditions:
     User is on the Home page.
@@ -816,8 +785,6 @@
     “Basket” → Basket
 
   TC 4.3.1 – Verify the 'Browse sweets' button is visible and redirects user to sweets page.
-    Test Summary:
-    Ensure the 'Browse sweets' button appears on the Home page and can be interacted with.
 
     Preconditions:
     User is on the Home page.
@@ -826,26 +793,28 @@
       Locate the 'Browse sweets' button.
       Check if the button is visible and not disabled.
       Attempt to click the button.
-      Observe change.
+      Observe change verify that user got redirected to browse sweets
 
     Expected Result:
     The 'Browse sweets' button is visible and redirects user to the Browse Sweets page.
 
-  TC 4.3.2 – Verify 'Add to Basket' buttons functionality
+ TC 4.3.2 – Verify 'Add to Basket' buttons functionality
 
-  Preconditions:
-    User is on the homepage
-    Products are in stock
+    Preconditions:
+    User is on the Home page.
+    basket is empty
 
-  Test Steps:
-    Click each 'Add to Basket' button
-    Observe system response
+    Test Steps:
+      attempt to click on 'Add to basket' button for 2 items
+      Observe change verify that basket counter updates
+      Go to the basket page
+      Check items are in the basket
 
-  Expected Result:
-    Clicking any button:
-      Adds item to cart/basket
-      Updates cart counter (+1)
-      Shows confirmation (e.g., toast message)
+    Expected Result:
+    basket counter updated 2 items added to basket
+
+
+
 
   TC 4.4.1 – From Home page, navigate to Login page → perform successful login → confirm redirection back to Home
     Test Summary:
@@ -891,7 +860,7 @@
     Expected Result:
     Previously added items are displayed in the basket with correct quantity and details.
 
-  TC 4.4.2 – Verify cart counter updates when adding items from 'Most Popular' section
+  TC 4.4.1 – Add item from 'most popular'and verify basket counter updates.
     
     Preconditions:
     User is on the homepage
@@ -909,7 +878,7 @@
       Counter increments instantly on each click
       No page reload required
 
-  TC 4.4.2 Verify Basket page displays added items correctly
+  TC 4.4.2 – Verify Basket page displays added items correctly
 
     Preconditions:
     TC 4.4.2 has been executed (cart contains 3 items)
@@ -935,8 +904,109 @@
       All items/prices persist across navigation
       Calculations are accurate to the penny
       Modifications (remove/update) work without page reload
+
+
+5. Browse sweets page functionalilty
+
+  TC 5.1.1 – Verify the page title is exactly "Browse sweets"
+
+    Preconditions:
+    User is on the Browse Sweets page.
+
+    Test Steps:
+      Locate the title element and confirm it's visible
+
+    Expected Result:
+      The element contains exactly the text: "Browse sweets
+
+  TC 5.1.2 – Verify the page contains the correct description text
     
-6 Basket Functionality
+    Preconditions:
+    User is on the Browse Sweets page.
+
+    Test Steps:
+      Locate the dectiption for browse sweets page
+      Make sure th description is relevant to page
+
+    Expected Result:
+      The element contains the text: "Browse our delicious choice of retro sweets."
+
+  TC 5.1.3 – Verify navbar elements are visible on the Browse Sweets page
+
+      Preconditions:
+      User is on the Browse sweets page.
+
+      Test Steps:
+        Inspect the navigation bar at the top of the page.
+        Verify the presence and visibility of the following elements:
+          Logo, "Sweet Shop", "Sweets", "About", "Login"  and "Basket" links
+          basket index is visible number is show
+
+      Expected Result:
+      All listed navbar elements are present and visible.e.
+
+  TC 5.1.4 – Check the page has the footer and it mentions 2018
+
+    Preconditions:
+    User is on the Browse Sweets page.
+
+    Test Steps:
+      Scroll to the bottom of the page.
+      Check for the footer conatins "2018".
+
+    Expected Result:
+      The footer text is visible and contains "2018".
+
+  TC 5.1.5 – Check the page contains 16 product items
+
+    Preconditions:
+    User is on the Browse Sweets page.
+
+    Test Steps:
+      Locate all elements with the class .card (representing products).
+      Count visible items
+
+    Expected Result:
+      Exactly 16 product cards are visible.
+
+  TC 5.1.6 – Check each product displays correct information
+
+    Preconditions:
+    User is on the Browse Sweets page. Product list is available.
+
+    Test Steps:
+      For each product:
+          Locate its product name using .card-title.
+          Confirm product description appears via .card-text.
+          Verify the price appears using .text-muted, in the format £x.xx.
+          Check the product image loads correctly and is visible.
+
+    Expected Result:
+      Each product displays:
+        Valid name.
+        Correct description.
+        Correct price (with £ and two decimal places).
+        Image is loaded and displayed.
+
+  TC 5.1.7 – Verify each product has a corresponding "Add to Basket" button
+  
+    Preconditions:
+    User is on the Browse Sweets page. Product data (name and ID) is known.
+
+    Test Steps:
+    For each product:
+      Locate the .card that contains the product's title.
+      Within that card, locate the "Add to Basket" button.
+      Check that the button contains the correct data-id attribute matching the product's ID.
+
+    Expected Result:
+      Each product card has a corresponding "Add to Basket" button.
+      The button includes the correct data-id.
+
+
+
+
+6. Basket Functionality
 
   TC 4.1.2 – Check page title is “Your Basket”
     Test Summary:
@@ -1178,38 +1248,6 @@
     Checkout summary mirrors the basket’s items and totals.
 
 
-
-// POTENTIAL TESTS
-
-  TC 4.4.2 Verify the page handles missing banner image gracefully
-    Test Summary:
-    Check if the UI gracefully handles missing or broken banner image URLs.
-
-    Preconditions:
-    Banner image URL is intentionally broken or missing.
-
-    Test Steps:
-        Load the Home page with a broken banner image URL.
-        Observe the banner area.
-
-    Expected Result:
-    An appropriate alt text or fallback UI is displayed (e.g., placeholder image or message), and the layout does not break.
-
-  TC 4.4.3 Verify the 'Browse sweets' button is disabled or hidden if there are no sweets available
-    Test Summary:
-    Ensure the system disables or hides the 'Browse sweets' button when the sweets list is empty.
-
-    Preconditions:
-    No sweets available in the system (simulate empty data state).
-
-    Test Steps:
-      Load the Home page with no sweets configured.
-      Locate the 'Browse sweets' button.
-
-    Expected Result:
-    The button is either hidden or visibly disabled and unclickable.
-
-  TC 4.4.4 Verify that clicking broken or disabled links does not cause page crashes
   Test Summary:
   Ensure the system handles broken or inactive links gracefully without crashing.
 
