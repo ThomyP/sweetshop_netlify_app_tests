@@ -205,6 +205,18 @@ describe('Sweeshop E-comer Website', () => {
   }
   ];
 
+
+  const invalidFirstnameInputs = ['😀😃😄','@#!$','12345','John'];
+  const invalidEmailInputs = ['john.doe', 'john@', '@gmail.com', 'john@@gmail.com', 'john.doe@.com', 'john.doe@com', 'john.doe@ gmail.com', '😊@gmail.com'];
+  const invalidAddressInputs = ['🏡 123 St', '123 St 🚀', '!@#$%^'];
+  const invalidZipInputs = ['ABC123', '123AB', '😊123', '!@#$', '12 345'];
+  const invalidCardNameInputs = ['Jane123', '👑Jane', 'Jane$', '123456'];
+  const invalidCardNumberInputs = ['4111-1111-1111-1111', 'abcd efgh', '😊😊😊😊', '4111 1111 1111 1111', '4111!1111!1111!1111'];
+  const invalidExpirationInputs = ['13/25', '00/23', '01-25', '1/2025', 'Jan 2025', '😊'];
+  const invalidCvvInputs = ['12', '12345', 'abc', '!@#', '😊'];
+
+
+
   describe('1. Sweet Shop - About Page Test Cases', () => {
       
     beforeEach(() => {
@@ -848,13 +860,13 @@ describe('Sweeshop E-comer Website', () => {
     });
   });
 
-  describe.only('6. Sweet Shop - Basket Page Test Cases', () => {
+  describe('6. Sweet Shop - Basket Page Test Cases', () => {
     
     beforeEach(() => {
       cy.visit(basketPage);
     });
 
-    describe('5.1 Page Load and UI Tests', () => {
+    describe('6.1 Page Load and UI Tests', () => {
 
       it('TC 6.1.1  Check page title is “Your Basket”', () => {
         cy.get('.display-3').contains('Your Basket').should('be.visible');
@@ -929,6 +941,364 @@ describe('Sweeshop E-comer Website', () => {
       });
  
     });
+
+    describe('6.2 Add Single Product to Empty Basket', () => {
+
+      it('TC 6.2.1  Check page title is “Your Basket”', () => {
+        cy.clearBasket().then(() => {
+  
+          cy.visit(sweetsPage);
+
+          cy.addProductsToBasket(1).then((addedProducts) => {
+            Cypress.env('addedProducts', addedProducts);
+
+            cy.visit(basketPage);
+
+            cy.get('span.badge-success').should('have.text', addedProducts.length.toString());
+            cy.get('#basketCount').should('have.text', addedProducts.length.toString());
+
+            addedProducts.forEach((product, index) => {
+              cy.get(`#basketItems li:not(:contains("Total")):eq(${index})`).within(() => {
+                cy.get('h6.my-0').should('contain', product.name);
+                cy.get('small.text-muted').should('contain', `x ${product.quantity || 1}`);
+                cy.get('span.text-muted').last().should('contain', product.price);
+                cy.contains('a.small', 'Delete Item').should('exist');
+              });
+            });
+          });
+        });
+      });
+
+      it('TC 6.2.2  Check page title is “Your Basket”', () => {
+        cy.clearBasket().then(() => { 
+          cy.visit(sweetsPage);
+
+          cy.addProductsToBasket(2, true).then((addedProducts) => {
+            Cypress.env('addedProducts', addedProducts);
+
+            cy.visit(basketPage);
+
+            const totalQuantity = addedProducts.reduce((sum, product) => sum + (product.quantity || 1), 0);
+            cy.get('span.badge-success').should('have.text', totalQuantity.toString());
+            cy.get('#basketCount').should('have.text', totalQuantity.toString());
+
+            addedProducts.forEach((product, index) => {
+              cy.get(`#basketItems li:not(:contains("Total")):eq(${index})`).within(() => {
+                cy.get('h6.my-0').should('contain', product.name);
+                cy.get('small.text-muted').should('contain', `x ${product.quantity || 1}`);
+                cy.get('span.text-muted').last().should('contain', product.price);
+                cy.contains('a.small', 'Delete Item').should('exist');
+              });
+            });
+          });
+        });
+      });
+      
+      it(`TC 6.2.3 Add Multiple Different Products`, ()=>{
+        cy.clearBasket().then(()=>{
+          cy.visit(sweetsPage);
+
+          cy.addProductsToBasket(2).then((addedProducts) => {
+            Cypress.env('addedProducts', addedProducts);
+
+            cy.visit(basketPage);
+
+            cy.get('span.badge-success').should('have.text', addedProducts.length.toString());
+            cy.get('#basketCount').should('have.text', addedProducts.length.toString());
+
+            addedProducts.forEach((product, index)=>{
+              cy.get(`#basketItems li:not(:contains("Total")):eq(${index})`).within(() => {
+                cy.get('h6.my-0').should('contain', product.name);
+                cy.get('small.text-muted').should('contain', `x ${product.quantity || 1}`);
+                cy.get('span.text-muted').last().should('contain', product.price);
+                cy.contains('a.small', 'Delete Item').should('exist');
+              });
+            });
+          });
+        })
+      });
+
+      it(`TC 6.2.4 Confirm Dynamic Price Updates`, ()=>{
+        cy.clearBasket().then(()=>{
+        cy.visit(sweetsPage)
+
+        cy.get('a.addItem[data-name="Chocolate Cups"]').click().click();
+        cy.get('a.addItem[data-name="Sherbert Straws"]').click();
+
+        cy.visit(basketPage);
+
+        cy.get('span.badge-success').should('have.text', '3');
+        cy.get('#basketCount').should('have.text', '3');
+        
+        cy.get('a[href="javascript:removeItem(1);"]').click();
+        
+        cy.get('span.badge-success').should('have.text', '1');
+        cy.get('#basketCount').should('have.text', '1');
+
+        cy.get(`#basketItems li`).eq(1).within(() => {
+          cy.get('div .text-muted').should('contain', '1');
+        });
+
+        cy.get(`#basketItems li`).last().within(() => {
+          cy.get('strong').should('contain', '0.75');
+        });
+
+        cy.contains('a[href="#"]', 'Empty Basket').click();
+        
+        cy.get('span.badge-success').should('have.text', '0');
+        cy.get('#basketCount').should('have.text', '0');
+
+        cy.get('#basketItems li:contains("Total") strong').should('contain', '0');
+      });
+
+
+
+      });
+
+      it(`TC 6.2.5 Check Shipping Cost Addition`, ()=>{
+        cy.clearBasket().then(()=>{
+          cy.visit(sweetsPage);
+
+          cy.get('a.addItem[data-name="Chocolate Cups"]').click();
+          cy.visit(basketPage);
+          cy.get('#basketItems li:contains("Total") strong').should('contain', '1.00');
+
+          cy.get('label[for="exampleRadios2"]').click();
+
+          cy.get('#basketItems li:contains("Total") strong').should('contain', '2.99');
+
+        });
+      });
+
+      it(`TC 6.2.6 Check Shipping Cost Addition with Prices Containing Decimal (e.g., £1.50)`, ()=>{
+        cy.clearBasket().then(()=>{
+          cy.visit(sweetsPage);
+
+          cy.get('a.addItem[data-name="Swansea Mixture"]').click();
+          cy.visit(basketPage);
+          cy.get('#basketItems li:contains("Total") strong').should('contain', '1.50');
+
+          cy.get('label[for="exampleRadios2"]').click();
+
+          cy.get('#basketItems li:contains("Total") strong').should('contain', '3.49');
+        });
+      });
+
+      it(`TC 6.2.7 Remove Single Item via Delete Button`, ()=>{
+        cy.clearBasket().then(()=>{
+          cy.visit(sweetsPage);
+
+          cy.addProductsToBasket(2);
+          cy.visit(basketPage);
+
+          cy.get('a[href="javascript:removeItem(1);"]').click();
+
+          cy.get('span.badge-success').should('have.text', '1');
+          cy.get('#basketCount').should('have.text', '1');
+
+          cy.get('#basketItems li').should('have.length', 2);
+     
+          cy.get('#basketItems li:contains("Total") strong').should('contain', '0.75');
+
+
+        });
+      });
+
+      it(`TC 6.2.8 Remove Single Item via Delete Button`, ()=>{
+        cy.clearBasket().then(()=>{
+          cy.visit(sweetsPage);
+
+          cy.addProductsToBasket(2);
+          cy.visit(basketPage);
+
+          cy.contains('a[href="#"]', 'Empty Basket').click();
+
+          cy.get('span.badge-success').should('have.text', '0');
+          cy.get('#basketCount').should('have.text', '0');
+
+          cy.get('#basketItems li').should('have.length', 1);
+     
+          cy.get('#basketItems li:contains("Total") strong').should('contain', '0.00');
+        });
+      });
+
+      it(`TC 6.2.9 Verify Basket Persistence`, ()=>{
+        cy.clearBasket().then(()=>{
+          cy.visit(sweetsPage);
+
+          cy.addProductsToBasket(2, true).then((addedProducts) => {
+            Cypress.env('addedProducts', addedProducts);
+
+            cy.visit(basketPage);
+            cy.visit(sweetsPage);
+            cy.go('back');
+
+            const totalQuantity = addedProducts.reduce((sum, product) => sum + (product.quantity || 1), 0);
+            cy.get('span.badge-success').should('have.text', totalQuantity.toString());
+            cy.get('#basketCount').should('have.text', totalQuantity.toString());
+
+            addedProducts.forEach((product, index) => {
+              cy.get(`#basketItems li:not(:contains("Total")):eq(${index})`).within(() => {
+                cy.get('h6.my-0').should('contain', product.name);
+                cy.get('small.text-muted').should('contain', `x ${product.quantity || 1}`);
+                cy.get('span.text-muted').last().should('contain', product.price);
+                cy.contains('a.small', 'Delete Item').should('exist');
+              });
+            });
+          });
+        });
+      });
+
+      it(`TC 6.2.9 Verify Basket Persistence`, ()=>{
+        cy.clearBasket().then(()=>{
+          cy.visit(sweetsPage);
+
+          cy.addProductsToBasket(2, true).then((addedProducts) => {
+            Cypress.env('addedProducts', addedProducts);
+
+            cy.visit(basketPage);
+            cy.visit(sweetsPage);
+            cy.go('back');
+
+            const totalQuantity = addedProducts.reduce((sum, product) => sum + (product.quantity || 1), 0);
+            cy.get('span.badge-success').should('have.text', totalQuantity.toString());
+            cy.get('#basketCount').should('have.text', totalQuantity.toString());
+
+            addedProducts.forEach((product, index) => {
+              cy.get(`#basketItems li:not(:contains("Total")):eq(${index})`).within(() => {
+                cy.get('h6.my-0').should('contain', product.name);
+                cy.get('small.text-muted').should('contain', `x ${product.quantity || 1}`);
+                cy.get('span.text-muted').last().should('contain', product.price);
+                cy.contains('a.small', 'Delete Item').should('exist');
+              });
+            });
+          });
+        });
+      });
+
+      it(`TC 6.2.10 Verify Basket Persistence`, ()=>{
+        cy.clearBasket().then(()=>{
+        
+          cy.visit(basketPage);
+
+          cy.fillBillingAddress();
+          cy.fillPaymentDetails();
+
+          cy.get('button[type="submit"]').contains('Continue to checkout').click()
+          
+          cy.contains('Your basket is empty').should('be.visible');
+
+        });
+      });
+
+
+    });
+
+    describe('6.3 Navigation and Menu', () => {
+      it(`TC 4.2.1 Verify clicking each navigation link redirects to the correct page`, () => {
+        links.forEach(({ selector, expectedUrl, verify }) => {
+          cy.visit(loginPage);
+          cy.get(selector).click();
+          cy.url().should('eq', expectedUrl);
+          verify();
+        });
+      });
+    });
+
+    describe('6.4 Billing address and Payment form validation tests', () => {
+
+      it(`TC 6.4.1 Validate First Name Field Input Types`, () => {
+        cy.triggerFormValidation();
+        invalidFirstnameInputs.forEach(input => {
+          cy.get('input#name').eq(0).clear().type(input);
+          cy.contains('.invalid-feedback', 'Valid first name is required')
+          .should('be.visible');
+        });
+      });
+
+      it(`TC 6.4.2 Validate Last Name Field Input Types`, () => {
+        cy.triggerFormValidation();
+        invalidFirstnameInputs.forEach(input => {
+          cy.get('input#name').eq(1).clear().type(input);
+          cy.contains('.invalid-feedback', 'Valid last name is required')
+          .should('be.visible');
+        });
+      });
+
+      it(`TC 6.4.3 Validate Email Field Input Format`, () => {
+        cy.triggerFormValidation();
+        invalidAddressInputs.forEach(input => {
+          cy.get('#address').clear().type(input);
+          cy.contains('.invalid-feedback', 'Please enter a valid email address for shipping updates.')
+          .should('be.visible');
+        });
+      });
+
+      it(`TC 6.4.4 Validate Address Field Input Types`, () => {
+        cy.triggerFormValidation();
+        invalidAddressInputs.forEach(input => {
+          cy.get('#address').clear().type(input);
+          cy.contains('.invalid-feedback', 'Please enter your shipping address.')
+          .should('be.visible');
+        });
+      });
+
+      it(`TC 6.4.5 Validate Address 2 Field Input Types`, () => {
+        cy.triggerFormValidation();
+        invalidAddressInputs.forEach(input => {
+          cy.get('#address').clear().type(input);
+          cy.contains('.invalid-feedback', 'Please enter your shipping address.')
+          .should('be.visible');
+        });
+      });
+
+      it(`TC 6.4.6: Validate invalid inputs for ZIP Code`, () => {
+        cy.triggerFormValidation();
+        invalidZipInputs.forEach(input => {
+          cy.get('#zip').clear().type(input);
+          cy.contains('.invalid-feedback', 'Zip code required.')
+          .should('be.visible');
+        });
+      });
+
+      it('TC 6.3.7 Validate invalid inputs for Name on Card', () => {
+        cy.triggerFormValidation();
+        invalidCardNameInputs.forEach(input => {
+          cy.get('#cc-name').clear().type(input);
+          cy.contains('.invalid-feedback', 'Name on card is required')
+          .should('be.visible');
+        });
+      });
+
+      it('TC 6.3.8 Validate invalid inputs for Card Number', () => {
+        cy.triggerFormValidation();
+        invalidCardNumberInputs.forEach(input => {
+          cy.get('#cc-number').clear().type(input);
+          cy.contains('.invalid-feedback', 'Credit card number is required')
+          .should('be.visible');        
+        });
+      });
+
+      it('TC 6.3.9: Validate invalid inputs for Expiration Date', () => {
+        cy.triggerFormValidation();
+        invalidExpirationInputs.forEach(input => {
+          cy.get('#cc-expiration').clear().type(input).blur();
+          cy.contains('.invalid-feedback', ' Expiration date required')
+          .should('be.visible'); 
+        });
+      });
+
+      it('TC 6.3.10 Validate invalid inputs for CVV', () => {
+        cy.triggerFormValidation();
+        invalidCvvInputs.forEach(input => {
+          cy.get('#cc-cvv').clear().type(input).blur();
+          cy.contains('.invalid-feedback', 'Security code required')
+          .should('be.visible'); 
+        });
+      });
+
+    });
+
   });
 
 

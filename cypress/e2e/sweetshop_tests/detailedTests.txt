@@ -798,7 +798,7 @@
     Expected Result:
     The 'Browse sweets' button is visible and redirects user to the Browse Sweets page.
 
- TC 4.3.2 – Verify 'Add to Basket' buttons functionality
+  TC 4.3.2 – Verify 'Add to Basket' buttons functionality
 
     Preconditions:
     User is on the Home page.
@@ -812,8 +812,6 @@
 
     Expected Result:
     basket counter updated 2 items added to basket
-
-
 
 
   TC 4.4.1 – From Home page, navigate to Login page → perform successful login → confirm redirection back to Home
@@ -904,7 +902,6 @@
       All items/prices persist across navigation
       Calculations are accurate to the penny
       Modifications (remove/update) work without page reload
-
 
 5. Browse sweets page functionalilty
 
@@ -1003,14 +1000,44 @@
       Each product card has a corresponding "Add to Basket" button.
       The button includes the correct data-id.
 
+  TC 5.2.1 – Verify 'Add to Basket' buttons functionality
 
+      Preconditions:
+      User is on the Browse sweets page.
+      basket is empty
 
+      Test Steps:
+        attempt to click on 'Add to basket' button for 2 items
+        Observe change verify that basket counter updates
+        Go to the basket page
+        Check items are in the basket
 
-6. Basket Functionality
+      Expected Result:
+      basket counter updated 2 items added to basket
 
-  TC 4.1.2 – Check page title is “Your Basket”
-    Test Summary:
-    Ensure the Basket page displays the correct page title.
+  TC 5.2.2 – Verify Basket Contains Correct Items After Adding
+
+  Preconditions:
+  User is on the "Browse sweets" page, basket is empty.
+
+  Test Steps:
+    Clear the basket.
+    Add "Chocolate Cups" and "Sherbert Straws" to the basket.
+    Go to the basket page.
+
+    Verify that the basket contains:
+      An item named "Chocolate Cups"
+      An item named "Sherbert Straws"
+      Each item has the correct price and quantity
+
+  Expected Result:
+  Basket shows exactly 2 items:
+      "Chocolate Cups" with correct price and quantity
+      "Sherbert Straws" with correct price and quantity
+
+6. Basket Functionality tests
+
+  TC 6.1.1 – Check page title is “Your Basket”
 
     Preconditions:
     User is on the Basket page.
@@ -1022,248 +1049,368 @@
     Expected Result:
     Page title is “Your Basket”.
 
-  TC 4.1.3 – Check page has basket description text
-    Test Summary:
-    Confirm that the page includes description text explaining the purpose of the page.
+  TC 6.1.2 – Check page has basket description text
 
     Preconditions:
     User is on the Basket page.
 
     Test Steps:
-        Locate the text under the “Your Basket” title.
-        Read and verify that it provides a helpful description of what to do next.
+      Read and verify that it provides a helpful description of what to do next.
 
     Expected Result:
-    The description text is visible and provides guidance.
+    The description text is visible (e.g. 'enter your payment and delivery details')
 
-  TC 4.1.4 – Verify Billing Address Form
-    Test Summary:
-    Ensure the Billing Address section contains all necessary input fields and dropdowns.
+  TC 6.1.3 – Verify "Billing address" section title is visible
 
     Preconditions:
     User is on the Basket page.
 
     Test Steps:
-        Scroll to the Billing Address section.
-        Confirm the following fields are present:
-            First name, Last name, Email, Address, Address 2 (Optional), Zip
-            Dropdowns: Country, City
+      Locate the "Billing address" section title and confirm it's visible
 
     Expected Result:
-    All listed fields are visible and accessible.
+    "Billing address" section has coresponding title
 
-  TC 4.1.5 – Verify Payment Form fields
-    Test Summary:
-    Check that the Payment section includes all required inputs.
+  TC 4.1.4 – Verify all billing address fields with their labels are visible
+
+    Preconditions:
+    User is on the Basket page.
+
+    Steps:
+      Check the following field pairs exist in order:
+      Label "First name" → Text input
+      Label "Last name" → Text input
+      Label "Email" → Input (pre-filled with "you@example.com")
+      Label "Address" → Text input
+      Label "Address 2 (Optional)" → Optional text input
+      Label "Country" → Dropdown (default "Choose...")
+      Label "City" → Dropdown (default "Choose...")
+      Label "Zip" → Text input
+
+    Expected: All labels appear immediately before their corresponding input fields
+
+  TC 6.1.5 – Verify "Payment" section title is visible
 
     Preconditions:
     User is on the Basket page.
 
     Test Steps:
-      Locate the Payment section.
-      Verify presence of:
-        Name on card, Credit card number, Expiration, CVV
+      Locate the "Payment" section title and confirm it's visible
 
     Expected Result:
-    All payment fields are correctly displayed.
+    "Payment" section has coresponding title
 
-  TC 4.1.6 – Verify Basket Summary when Empty
-    Test Summary:
-    Ensure the basket summary shows zero items and £0.00 total when empty.
+  TC 6.1.6 – Verify Payment Form fields
 
     Preconditions:
-    Basket is empty.
     User is on the Basket page.
 
-    Test Steps:
-      Look at the basket summary on the right.
-      Verify it shows 0 items and a total of £0.00.
+    Steps:
+    Confirm these labeled fields exist:
+      "Name on card" → Text input
+      "Credit card number" → Text input
+      "Expiration" → Date input (MM/YY format)
+      "CVV" → Numeric input (3-4 digits)
 
-    Expected Result:
-    Counter = 0, Total = £0.00.
+    Expected: All payment fields have visible labels positioned correctly
 
-  TC 4.1.8 – Check Standard Shipping updates total by £1.99
-    Test Summary:
-    Ensure selecting Standard Shipping adds £1.99 to the basket total.
-
-    Preconditions:
-    Basket contains at least one item.
-    User is on the Basket page.
-
-    Test Steps:
-        Note current basket total.
-        Select “Standard Shipping (£1.99)”.
-        Verify updated total reflects additional £1.99.
-
-    Expected Result:
-    Total increases by £1.99.`
-
-  TC 4.1.9 – Check Promo Code textbox is visible
-    Test Summary:
-    Verify that the Promo Code textbox is displayed.
+  TC 6.1.7 – Verify "Your Basket" section title is visible
 
     Preconditions:
     User is on the Basket page.
 
     Test Steps:
-        Locate the promo code section.
-        Check that the input textbox is visible.
+      Locate the "Your Basket" section title and confirm it's visible
 
     Expected Result:
-    Promo Code textbox is present and editable.
+    "Your Basket" section has coresponding title
 
-  TC 4.1.10 – Check Redeem button applies code
-    Test Summary:
-    Ensure the "Redeem" button applies the entered promo code.
+  TC 6.1.8 – Verify Product Counter
+
+    Precondition: 
+    Basket is empty
+    User is on the Basket page
+
+    Steps:
+      Locate the product count indicator
+      observe product indicator is visible and contains '0'
+
+    Expected Result:
+    product indicator is visible and shows '0'
+
+  TC 6.1.9 – Verify Total Amount filed is visible and diplays corect information
 
     Preconditions:
-    Valid promo code is available.
     User is on the Basket page.
 
-    Test Steps:
-        Enter a valid promo code in the textbox.
-        Click the “Redeem” button.
-        Observe if discount is applied.
+    Steps:
+      Find the "Total (GBP)" label and confirm it's visible
+      Check the adjacent value
 
-    Expected Result:
-    Promo code is applied and total updates correctly.
+    Expected result:
+    filed shows exactly "£0.00" when empty
 
-  TC 4.1.11 – Check Empty Basket button clears items
-    Test Summary:
-    Ensure the “Empty Basket” button removes all items from the basket.
-
-    Preconditions:
-    Basket has at least one item.
-    User is on the Basket page.
-
-    Test Steps:
-        Click the “Empty Basket” link/button.
-        Check that the basket summary shows 0 items and £0.00.
-
-    Expected Result:
-    All items are removed, basket is empty.
-
-  TC 4.1.12 – Check Continue to Checkout button
-    Test Summary:
-    Ensure the “Continue to checkout” button is present and clickable.
+  TC 6.1.10 – Verify "Delivery" section title is visible
 
     Preconditions:
     User is on the Basket page.
 
     Test Steps:
-        Locate the blue “Continue to checkout” button.
-        Check if it is enabled and can be clicked.
+      Locate the "Delivery" section title and confirm it's visible
 
     Expected Result:
-    Button is visible and functional.
+    "Delivery" section has coresponding title
 
-  TC 4.2.1 – Add a product to the basket
-    Test Summary:
-    Verify that clicking "Add to Basket" adds one product and updates basket counter.
+  TC 6.1.11 – Check Promo code textbox is visible
 
     Preconditions:
-    User is on the Browse Sweets page.
+    User is on the Basket page.
 
     Test Steps:
-        Click "Add to Basket" on one product.
-        Check the basket icon counter updates to 1.
-        Open the Basket page and verify the item is listed.
+      Check for:
+        "Promo code" label
+        Text input box
 
     Expected Result:
-    Item is added and shown in the basket.
+    Input field is visible, empty and enabled
 
-  TC 4.2.2 – Add multiple quantities of the same product
-    Test Summary:
-    Ensure multiple clicks of "Add to Basket" on the same item increase its quantity.
+  TC 6.1.12 – Check “Redeem” button is visible
 
     Preconditions:
-    User is on the Browse Sweets page.
+    User is on the Basket page.
 
     Test Steps:
-        Click “Add to Basket” on the same product multiple times (e.g. 3 times).
-        Go to the Basket page.
-        Confirm quantity of the item is 3.
+      CLocate the "Redeem" button make sure it's visible
 
     Expected Result:
-    Item quantity is shown as 3 in the basket.
+    Button is visible and enabled
 
-  TC 4.2.3 – Add multiple different products
-    Test Summary:
-    Verify that different products can be added and listed in the basket.
+  TC 6.1.13 – Check “Empty basket” button is visible
 
     Preconditions:
-    User is on the Browse Sweets page.
+    User is on the Basket page.
 
     Test Steps:
-        Add three different items to the basket.
-        Navigate to the Basket page.
-        Confirm all three items appear.
+      Locate the "Empty basket" button and confirm it's visible
 
     Expected Result:
-    All different products are listed correctly.
+    Button is visible and enabled
 
-  TC 4.2.4 – Confirm total price updates correctly
-    Test Summary:
-    Ensure that the total in the basket reflects prices of all items + shipping/promo if applicable.
+  TC 6.1.14 – Check “Continue to Checkout” button is visible
+
+      Preconditions:
+      User is on the Basket page.
+
+      Test Steps:
+        Locate the "Continue to Checkout" button and confirm it's visible
+
+      Expected Result:
+      Button is visible
+      Displays exact text "Continue to Checkout"
+      In enabled state (clickable)
+
+  TC 6.1.15 – Check the page has the banner and it matches 2018
 
     Preconditions:
-    Basket contains multiple items.
+    User is on the Basket page.
 
     Test Steps:
-      Add items with known prices.
-      Calculate expected total manually.
-      Compare with total displayed on the Basket page.
+      Scroll to the banner section of the page.
+      Compare the displayed banner with the 2018 design reference.
 
     Expected Result:
-    Displayed total matches expected total.
+    The banner is visible and matches the 2018 design/logo.
 
-  TC 4.2.5 – Remove a product from the basket
-    Test Summary:
-    Verify that removing an item updates the list and total price.
+
+  TC 6.2.1 Add Single Product to Empty Basket
+
+    Precondition:
+    User is on Browse sweets page
+    Basket is empty (counter shows "0")
+
+    Test steps:
+      Click "Add to Basket" on any product
+      Navigate to basket page
+      Confirm the exact product was added and counter shows 1
+
+    Expected Result:
+      Basket counter updates to "1"
+      Added product appears in basket list with:
+        Correct product name, quantity "x1", Correct unit price.
+        Total equals product price
+
+  TC 6.2.2 Add Multiple Quantities of Same Product
+
+    Precondition:
+    User is on Browse sweets page
+    Basket is empty (counter shows "0")
+
+    Test steps:
+      Click "Add to Basket" twice on the same product
+      Navigate to basket page
+      Confirm the exact product was added and counter shows 2
+
+    Expected Result:
+      Basket counter updates to "2"
+      Added product appears in basket list with:
+        Correct product name, quantity "x2", Correct unit price.
+        Total matches line total
+  
+  TC 6.2.3 Add Multiple Different Products
+
+    Precondition:
+    User is on Browse sweets page
+    Basket is empty (counter shows "0")
+
+    Test steps:
+      Add Product A to basket
+      Add Product B to basket
+      Navigate to basket page
+
+    Expected Result:
+      Basket counter updates to "2"
+      Added product appears in basket list with:
+        Correct product name, quantity "x2", Correct unit price.
+        Total matches line total
+  
+  TC 6.2.4 Confirm Dynamic Price Updates
+
+    Precondition:
+    Basket contains:
+      2× Product A (£1.00)
+      1× Product B (£0.75)
+
+    Test steps:
+      Click "Delete" on Product A (removes one quantity)
+      Observe change in basket items counter
+      Click "Empty Basket"
+      Observe change in basket items counter and total price
+
+    Expected Result:
+      After deletion:
+        Product A shows '1'
+        basket counter shows '2'
+        Total reduces by £1.00
+      After emptying:
+         basket counter shows '0'
+         Total shows £0.00
+
+    REPORT BUG Delete item removes all items not just reduces quantity
+       
+
+  TC 6.2.5 Check Shipping Cost Addition with even prices
+    Precondition:
+    Basket contains items totaling £1.00
+
+    Test steps:
+      Select "Standard Shipping (£1.99)" radio button
+
+    Expected Result:
+      Total updates to £2.99
+      Selection persists on page refresh
+
+    Observed total: £11.99
+    Issue: Total price is incorrectly calculated. Possibly due to a multiplication or string concatenation bug.
+
+  TC 6.2.6 Check Shipping Cost Addition with Prices Containing Decimal (e.g., £1.50) 
+
+    Precondition:
+    Basket contains items totaling £1.50
+
+    Test steps:
+      Select "Standard Shipping (£1.99)" radio button
+
+    Expected Result:
+      Total updates to £3.49
+      Selection persists on page refresh
+
+    Observed total: £NaN
+    Issue: Total becomes "Not a Number". Likely a parsing bug — price strings with commas or currency symbols might not be properly converted to numbers.
+
+  TC 6.2.7 Remove Single Item via Delete Button
+
+    Precondition:
+    Basket contains 2 different products
+
+    Test steps:
+      Click "Delete" next to Product A
+
+    Expected Result:
+      Product A disappears from list
+      Basket counter decrements by 1
+      Total reduces by Product A's price
+      
+  TC 6.2.8 Empty basket via "Empty Basket" link
+
+    Precondition:
+    Basket contains 2 different products
+
+    Test steps:
+      Click "Empty Basket" link
+      Confirm basket is emptied
+
+    Expected Result:
+      All items removed from list
+      Total shows £0.00
+      Counter resets to "0"
+
+  TC 6.2.9 Verify Basket Persistence
+
+    Precondition:
+    Basket contains 2 different products
+
+    Test steps:
+      Refresh page
+      Navigate out of basket to Home page
+      Return back to page
+
+    Expected Result:
+      All items remain in basket
+      Quantities/prices unchanged
+      Total persists correctly
+
+  TC 6.2.10 Attempt checkout with empty basket
+
+    Precondition:
+      Billing and adress form is filled with valid details
+      Basket is empty
+
+    Test steps:
+      Click "Continue to Checkout"
+
+    Expected Result:
+      "Your basket is empty" message
+
+    report bug payment passes with empty basket;
+
+TC 6.3.1 – Verify clicking each navigation link redirects to the correct page from the Your account page
 
     Preconditions:
-    Basket contains at least one product.
+    User has a valid account (email & password).
 
     Test Steps:
-      Remove an item from the basket.
-      Confirm that it no longer appears in the basket.
-      Confirm total is updated.
+      Log in.
+      Navigates from "Your Account" page using each nav link.
+      Verifies each redirect + title.
+      Logs in again after each navigation (to simulate session reset).
 
     Expected Result:
-    Item is removed and total reflects the change.
+      Each navigation link from the "Your Account" page successfully redirects to the correct page.
 
-  TC 4.2.6 – Verify checkout summary matches basket contents
-    Test Summary:
-    Ensure the checkout summary matches what's listed in the basket.
+ 
+TC 6.4.1 Validate First Name Field Input Types
 
-    Preconditions:
-    User has items in the basket and continues to checkout.
+Precondition:
+Checkout form is visible.
 
-    Test Steps:
-        Add products to basket.
-        Click “Continue to checkout”.
-        Confirm items and quantities match those from basket summary.
+Test Steps:
+  Clear the #name input for first name (use .first()).
+  Type emojis (e.g., 😀😃😄) → Check if allowed.
+  Type special characters (e.g., @#!$) → Check if allowed.
+  Type numbers (e.g., 12345) → Check if allowed.
+  Type alphabetic characters (e.g., John) → Check if accepted as valid.
 
-    Expected Result:
-    Checkout summary mirrors the basket’s items and totals.
-
-
-  Test Summary:
-  Ensure the system handles broken or inactive links gracefully without crashing.
-
-  Preconditions:
-  Application contains a broken or intentionally disabled navigation link.
-
-  Test Steps:
-    Click on a broken or disabled link (if present).
-    Observe system behavior.
-
-  Expected Result:
-  No JavaScript errors, blank screens, or crashes occur. The application handles the event gracefully (e.g., stays on the current page or shows an error message).
+Expected Result:
+Only alphabetic input should be accepted without validation error. Others should trigger invalid feedback.
 
 
-  ### 3.4 Edge and Negative Cases
-  - **3.4.1** Verify the navigation links show appropriate feedback (e.g., loading indicator) on slow network.
-  - **3.4.2** Verify the page handles missing banner image gracefully (e.g., alt text or fallback).
-  - **3.4.3** Verify the 'Browse sweets' button is disabled or hidden if there are no sweets available.
-  - **3.4.4** Verify that clicking broken or disabled links does not cause page crashes.

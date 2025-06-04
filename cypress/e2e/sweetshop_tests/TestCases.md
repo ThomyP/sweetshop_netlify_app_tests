@@ -119,17 +119,16 @@
 ### 5.1 Page Load and UI Tests
   - **5.1.1** Verify the page title is exactly "Browser sweets"
   - **5.1.2** Verify the page contains the correct description text 
-  - **5.1.3** Check navbar has 'logo', 'Sweet Shop' href, 'Sweets', 'About', 'Login', 'Basket' elements visible
+  - **5.1.3** Verify navbar elements are visible on the Browse Sweets page
   - **5.1.4** Check the page has the footer and it mentions 2018
   - **6.1.5** Check page contains 16 items
-  Check
   - **5.1.6** Check each product diplays corect information
-  5.1.7 Verify each product has a corresponding "Add to Basket" button
+  - **5.1.7** Verify each product has a corresponding "Add to Basket" button
 
-  ### 5.2 Functional testing
-  - **5.2.2** Verify 'Add to Basket' buttons functionality
+### 5.2 Functional testing
+  - **5.2.1** Verify 'Add to Basket' buttons functionality
 
-  ### 5.3 Navigation and Menu
+### 5.3 Navigation and Menu
   - **5.3.1** Verify clicking each navigation link redirects to the correct page:
   - **Logo** → Home page
   - **Sweets** → Browse Sweets page.
@@ -141,41 +140,51 @@
 
 ## 6. Sweet Shop - Basket Page Test Cases
 ### 6.1 Basket Page – UI & Load Checks
-  - **4.1.1** – Check page has **header**, **body**, and **footer**
-  - **4.1.2** – Check page title is **“Your Basket”**
-  - **4.1.3** – Check page has basket **description text**
-  - **4.1.4** – Verify **Billing Address Form** includes input fields:
-    - `First name`, `Last name`, `Email`, `Address`, `Address 2 (Optional)`, `Zip`
-    - Dropdown/select fields: `Country`, `City`
-
-  - **4.1.5** – Verify **Payment Form** contains input fields:
-     - `Name on card`, `Credit card number`, `Expiration date`, `CVV`
-
-  - **4.1.6** – Verify **"Your Basket" summary** shows:
-  - Product counter (number of items)
-  - `Total (GBP)` value, showing £0.00 or equivalent when basket is empty
-  - **4.1.8** – Check selecting **Standard Shipping** adds £1.99 to `Total`
-  - **4.1.9** – Check **Promo code** textbox is visible
-  - **4.1.10** – Check **“Redeem”** button works and applies code
-  - **4.1.11** – Check **“Empty Basket”** button clears basket items
-  - **4.1.12** – Check **“Continue to checkout”** button is visible and clickable
+  - **6.1.1**  Check page title is “Your Basket”
+  - **6.1.2**  Check page has basket description text
   
-### 4.2 Basket Functionality
-  - **4.2.1** – Add a product to the basket  
-  - **4.2.2** – Add multiple quantities of the same product  
-  - **4.2.3** – Add multiple different products  
-  - **4.2.4** – Confirm total price updates correctly  
-  - **4.2.5** – Remove a product from the basket  
-  - **4.2.5** – Remove a product from the using 'empty basket'
-  - **4.2.6** – Verify checkout summary matches basket contents  
+  - **6.1.3** Verify "Billing address" section title is visible
+  - **6.1.4**  Verify all billing address fields with their labels are visible
 
-### 4.3 Navigation and Menu
-  - **4.3.1** Verify clicking each navigation link redirects to the correct page:
+  - **6.1.5** Verify "Payment" section title is visible
+  - **6.1.6** Verify all payment fields with their labels are visible
+
+  - **6.1.7** Verify "Your Basket" section title is visible
+  - **6.1.8** Verify "Your Basket" shows: Product counter
+  - **6.1.9** Verify Total Amount filed is visible and diplays corect information
+ 
+  - **6.1.10** Verify "Delivery" section title is visible
+  - **6.1.11**  Check Promo code textbox is visible
+  - **6.1.12**  Check “Redeem” button is visible
+  - **6.1.13**  Check “Empty basket” button is visible
+  
+  - **6.1.14**  Check “Continue to Checkout” button is visible
+  - **6.1.15** Check the page has the footer and it mentions 2018
+  
+### 6.2 Basket Functionality
+  - **6.2.1** – Add single product to empty basket  
+  - **6.2.2** – Add multiple quantities of same product  
+  - **6.2.3** – Add multiple different products  
+  - **6.2.4** – Confirm dynamic price updates 
+  - **6.2.5** – Check Shipping Cost Addition with even prices 
+  - **6.2.6**Check Shipping Cost Addition with Prices Containing Decimal (e.g., £1.50)
+  - **6.2.7** – Remove single item via "Delete" button 
+  - **6.2.8** – Empty basket via "Empty Basket" link
+  - **6.2.9** – Verify basket persistence
+  - **6.2.10** – Attempt checkout with empty basket
+  
+
+### 6.3 Navigation and Menu
+  - **6.3.1** Verify clicking each navigation link redirects to the 
+  - correct page:
   - **Logo** → Home page.
   - **Sweets** → Browse Sweets page.
   - **About** → About page.
   - **Login** → Login page.
-    
+
+### 6.4 Billing adress form
+  - **6.4.1** 
+
 
 
 
