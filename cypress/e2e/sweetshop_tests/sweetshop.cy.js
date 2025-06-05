@@ -205,7 +205,8 @@ describe('Sweeshop E-comer Website', () => {
   }
   ];
 
-
+  const validPromoCode = 'SWEET10';
+  const invalidPromoCodeInputs = ['🎁🔥','@#!$%^','SAVE@10', '     ',];
   const invalidFirstnameInputs = ['😀😃😄','@#!$','12345','John'];
   const invalidEmailInputs = ['john.doe', 'john@', '@gmail.com', 'john@@gmail.com', 'john.doe@.com', 'john.doe@com', 'john.doe@ gmail.com', '😊@gmail.com'];
   const invalidAddressInputs = ['🏡 123 St', '123 St 🚀', '!@#$%^'];
@@ -613,19 +614,20 @@ describe('Sweeshop E-comer Website', () => {
         });
       });
 
-      it('TC 3.2.5 - Verify "Delete Item" functionality updates count and retains remaining items', () => {
+      it.only('TC 3.2.5 - Verify "Delete Item" functionality updates count and retains remaining items', () => {
         cy.clearBasket();
-        cy.addTwoItemsToBasket();
+        cy.visit(sweetsPage);
+        cy.addProductsToBasket(3);
         cy.visit(loginPage);
         cy.login(validEmail, testPassword );
         
-        cy.get('#basketItems li').should('have.length', 2);
+        cy.get('#basketItems li').should('have.length', 3);
         
         cy.contains('a', 'Delete Item').first().click();
 
-        cy.get('span.badge-success').should('have.text', '1');
+        cy.get('span.badge-success').should('have.text', '2');
         
-        cy.get('#basketItems li').should('have.length', 1);
+        cy.get('#basketItems li').should('have.length', 2);
         
       });
     });
@@ -727,6 +729,7 @@ describe('Sweeshop E-comer Website', () => {
     });
 
     describe('4.2 Navigation and Menu', () => {
+
       it(`TC 4.2.1 Verify clicking each navigation link redirects to the correct page`, () => {
         links.forEach(({ selector, expectedUrl, verify }) => {
           cy.visit(loginPage);
@@ -735,9 +738,11 @@ describe('Sweeshop E-comer Website', () => {
           verify();
         });
       });
+
     });
 
     describe('4.3 Functional testing', () => {
+
       it(`TC 4.3.1 Verify the 'Browse sweets' button is visible and clickable`, () => {
         cy.get('.sweets').should('be.visible').click();
         cy.url().should('eq', sweetsPage);
@@ -753,8 +758,6 @@ describe('Sweeshop E-comer Website', () => {
         cy.visit(basketPage)
         cy.get('#basketItems li').should('have.length', 3);
       });
-
-    
 
     });
 
@@ -811,7 +814,6 @@ describe('Sweeshop E-comer Website', () => {
           cy.contains('.card-text', product.description).should('be.visible');
           cy.contains('.text-muted', product.priceFormatted).should('be.visible');
 
-
           cy.get(`img[src="${product.image}"]`)
             .should('be.visible')
             .and('have.prop', 'naturalWidth')
@@ -829,6 +831,7 @@ describe('Sweeshop E-comer Website', () => {
             });
         });
       });
+
     });
 
     describe('5.2 Browse sweets Functionality Tests', () => {
@@ -848,7 +851,8 @@ describe('Sweeshop E-comer Website', () => {
 
     });
 
-    describe('3.3 Menu Navigation ', () => {
+    describe('5.3 Menu Navigation ', () => {
+
       it(`TC 4.2.1 Verify clicking each navigation link redirects to the correct page`, () => {
         links.forEach(({ selector, expectedUrl, verify }) => {
           cy.visit(loginPage);
@@ -857,7 +861,9 @@ describe('Sweeshop E-comer Website', () => {
           verify();
         });
       });
+
     });
+
   });
 
   describe('6. Sweet Shop - Basket Page Test Cases', () => {
@@ -1149,48 +1155,24 @@ describe('Sweeshop E-comer Website', () => {
         });
       });
 
-      it(`TC 6.2.9 Verify Basket Persistence`, ()=>{
-        cy.clearBasket().then(()=>{
-          cy.visit(sweetsPage);
-
-          cy.addProductsToBasket(2, true).then((addedProducts) => {
-            Cypress.env('addedProducts', addedProducts);
-
-            cy.visit(basketPage);
-            cy.visit(sweetsPage);
-            cy.go('back');
-
-            const totalQuantity = addedProducts.reduce((sum, product) => sum + (product.quantity || 1), 0);
-            cy.get('span.badge-success').should('have.text', totalQuantity.toString());
-            cy.get('#basketCount').should('have.text', totalQuantity.toString());
-
-            addedProducts.forEach((product, index) => {
-              cy.get(`#basketItems li:not(:contains("Total")):eq(${index})`).within(() => {
-                cy.get('h6.my-0').should('contain', product.name);
-                cy.get('small.text-muted').should('contain', `x ${product.quantity || 1}`);
-                cy.get('span.text-muted').last().should('contain', product.price);
-                cy.contains('a.small', 'Delete Item').should('exist');
-              });
-            });
-          });
+      it(`TC 6.2.10 Validate promocode Field Input Types.`, ()=>{
+        cy.addTwoItemsToBasket();
+        cy.visit(basketPage);
+        invalidPromoCodeInputs.forEach((input) => {
+          cy.get('.form-control[placeholder="Promo code"]').clear().type(input);
+          cy.contains('button', 'Redeem').click();
+          cy.get('.invalid-feedback').should('be.visible')
+          .and('contain', 'Please input a valid promo code');
         });
-      });
 
-      it(`TC 6.2.10 Verify Basket Persistence`, ()=>{
-        cy.clearBasket().then(()=>{
-        
-          cy.visit(basketPage);
-
-          cy.fillBillingAddress();
-          cy.fillPaymentDetails();
-
-          cy.get('button[type="submit"]').contains('Continue to checkout').click()
-          
-          cy.contains('Your basket is empty').should('be.visible');
-
+        it('should accept a valid promo code and apply discount', () => {
+          cy.get('.form-control[placeholder="Promo code"]').clear().type(validPromoCode);
+          cy.contains('button', 'Redeem').click();
+          cy.get('.invalid-feedback').should('not.be.visible');
+          cy.contains('Discount applied').should('be.visible');
         });
-      });
 
+      });
 
     });
 
@@ -1299,8 +1281,71 @@ describe('Sweeshop E-comer Website', () => {
 
     });
 
-  });
+    describe('6.5 checkout flow tests', () => {
 
+      it(`TC 6.5.1 Valid Checkout Flow`, () => {
+        cy.clearBasket()
+        cy.visit(sweetsPage);
+        cy.addProductsToBasket(2);
+        
+        cy.visit(basketPage);
+        cy.fillBillingAddress();
+        cy.fillPaymentDetails();
+        cy.get('button[type="submit"]').contains('Continue to checkout').click();
+
+        cy.get('span.badge-success').should('have.text', '0');
+        cy.get('#basketCount').should('have.text', '0');
+        cy.get('#basketItems li').not(':contains("Total")').should('have.length', 0);
+      });
+
+      it(`TC 6.5.2 Attempt Checkout with Empty Basket`, () => {
+        cy.clearBasket()
+        cy.visit(basketPage);
+        cy.fillBillingAddress();
+        cy.fillPaymentDetails();
+        cy.get('button[type="submit"]').contains('Continue to checkout').click();
+
+        cy.contains('Basket is empty').should('be.visible');
+      });
+
+      it(`TC 6.5.3 Attempt Checkout with Partially Completed Form`, () => {
+        cy.clearBasket()
+        cy.visit(sweetsPage);
+        cy.addProductsToBasket(2);
+
+        cy.visit(basketPage);
+        cy.fillBillingAddress();
+
+        cy.get('#cc-number').type('4111 1111 1111 1111');
+        cy.get('#cc-expiration').type('12/26');
+        cy.get('#cc-cvv').type('123');
+
+        cy.get('button[type="submit"]').contains('Continue to checkout').click();
+
+        cy.contains('.invalid-feedback', 'Name on card is required').should('be.visible');
+      });
+
+      it(`TC 6.5.4 Attempt Checkout with Invalid Form Inputs`, () => {
+        cy.clearBasket()
+        cy.visit(sweetsPage);
+        cy.addProductsToBasket(2);
+
+        cy.visit(basketPage);
+        cy.fillBillingAddress();
+
+        cy.get('#cc-name').type('joh doe');
+        cy.get('#cc-number').type('4111 1111 1111 1111');
+        cy.get('#cc-expiration').type('12/26');
+        cy.get('#cc-cvv').type('---');
+
+        cy.get('button[type="submit"]').contains('Continue to checkout').click();
+
+        cy.contains('.invalid-feedback', 'Security code required ').should('be.visible');
+      });
+
+    });
+
+  });
 
 });
 

@@ -18,8 +18,8 @@
 ### 2.1 Page Load and UI Tests
   - **2.1.1** Check the page has title 'Login'
   - **2.1.2** Check the page has the description
-  - **2.1.3** Check 'email adress' and 'password' in description has hover effect '?'
-  - **2.1.4** Confirm the presence of input fields: Email address textbox
+  - **2.1.3** Verify hover effect tooltip on "email address" and "password" in description'
+  - **2.1.4** Confirm the presence of input fields
   - **2.1.5** Ensure the Login button is visible and correctly labeled.
   - **1.1.6** Check navbar has all elements visible
   - **1.1.7** Verify all social media icons are visible
@@ -28,7 +28,7 @@
 ### 2.2 Login Functionality Tests
   - **2.2.1** Password masking (should show •••• instead of plaintext).
   - **2.2.1** Successful login with valid email credentials
-  - **2.2.3** Unsuccessful login invalid email format (user@)
+  - **2.2.3** Unsuccessful login invalid email format
   - **2.2.4** Unsuccessful login with invalid email format (user.com)
   - **2.2.5** Unsuccessful login with invalid email format (user@.com)
   - **2.2.6** Unsuccessful login scenario empty email
@@ -49,21 +49,18 @@
 
 ## 3. Sweet Shop - Your Account Page Test Cases
 ### 3.1 Page Load and UI Tests
-  - **3.1.1** Check navbar has 'logo', 'Sweet Shop' href, 'Sweets', 'About', 'Login', 'Basket' elements visible
+  - **3.1.1** Verify navbar elements are visible on the Your Account page
   - **3.1.2** Check the page title is "Your Account".
-  - **3.1.3** Confirm the welcome message displays the logged-in user’s email (e.g., "Welcome back test@user.com").
+  - **3.1.3** Verify the welcome message displays the user’s email
   - **3.1.4** Verify the presence and visibility of "Previous Orders Table" title.
   - **3.1.5** Confirm table columns exist:
     - Order Number
     - Date Ordered
     - Order Description
     - Order Total
-  - **3.1.6** Validate individual order data:
-    - **Order #1**: "Swansea Mixture x 1", Total = £1.50
-    - **Order #2**: "Sherbert Straws x 1", Total = £0.75
-    - **Order #3**: "Chocolate Cups + Swansea Mixture", Total = £8.00
-  - **3.1.7** Check that dates are displayed in readable format (e.g., "11th Feb 2019").
-  - **3.1.8** Confirm the title **"Item Order Breakdown"** is visible above the chart.
+  - **3.1.6** Validate specific order data
+  - **3.1.7** Check that dates are displayed in readable format
+  - **3.1.8** Verify "Item Order Breakdown" title is visible
   - **3.1.9** 'Item Order Breakdown' Chart canvas renders
   - **3.1.10** Check the page has the banner and it matches 2018
     
@@ -72,10 +69,8 @@
   - **3.2.2** Check that clicking **"Date Ordered"** sorts by most recent date.
   - **3.2.3** Check that clicking **"Order Description"** sorts alphabetically (Z → A).
   - **3.2.4** Check that clicking **"Order Total"** sorts by amount (highest → lowest).
-  - **3.2.5** Verify delete functionality:
-    - Clicking "Delete Item" updates the item count correctly
-    - Other items remain after deletion
-  - **3.2.6** Hovering over any "Delete Item" button causes a visual change (e.g., color, underline).
+  - **3.2.5** Verify "Delete Item" functionality updates count and retains remaining items
+
     
 ### 3.3 Menu Navigation 
   - **3.3.1** Verify clicking each navigation link redirects to the correct page:
@@ -85,10 +80,6 @@
     - **Login** → Login page.
     - **Logo** → Home page.
   
-   
-
-
-
 ## 4. Sweet Shop - Home Page Test Cases 
 ### 4.1 Page Load and UI Tests
   - **4.1.1** Verify the page title is exactly "Welcome to the sweet shop!"
@@ -101,7 +92,7 @@
   - **4.1.8** Verify that all 4 product cards are displayed in 'most popular' category
    - **4.1.9** Verify product cards display correct information
    - **4.1.10** Verify 'Add to Basket' buttons are displayed
-   - **4.1.11** Check navbar has 'logo', 'Sweet Shop' href, 'Sweets', 'About', 'Login', 'Basket' elements visible
+   - **4.1.11** 
  
   ### 4.2 Navigation and Menu
   - **4.2.1** Verify clicking each navigation link redirects to the correct page:
@@ -171,8 +162,7 @@
   - **6.2.7** – Remove single item via "Delete" button 
   - **6.2.8** – Empty basket via "Empty Basket" link
   - **6.2.9** – Verify basket persistence
-  - **6.2.10** – Attempt checkout with empty basket
-  
+  - **6.2.10** – Validate promocode Field Input Types.
 
 ### 6.3 Navigation and Menu
   - **6.3.1** Verify clicking each navigation link redirects to the 
@@ -182,10 +172,20 @@
   - **About** → About page.
   - **Login** → Login page.
 
-### 6.4 Billing adress form
-  - **6.4.1** 
+### 6.4 Billing address and Payment form validation
+- **6.4.1** – Validate First Name Field Input Types.
+- **6.4.2** – Validate Last Name Field Input Types.
+- **6.4.3** – Validate Email Field Input Format.
+- **6.4.4** – Validate Address Field Input Types.
+- **6.4.5** – Validate Address 2 Field Input Types.
+- **6.4.6** – Validate invalid inputs for ZIP Code.
+- **6.4.7** – Validate invalid inputs for Name on Card.
+- **6.4.8** – Validate invalid inputs for Card Number.
+- **6.4.9** – Validate invalid inputs for Expiration Date.
+- **6.4.10** – Validate invalid inputs for CVV.
 
-
-
-
-
+### 6.5 checkout flow tests
+- **6.5.1** – Valid Checkout Flow
+- **6.5.2** – Attempt checkout with empty basket
+- **6.5.2** – Attempt checkout with partial Form Submission
+- **6.5.2** – Attempt checkout with empty basket

@@ -112,7 +112,7 @@
     Tooltips (question mark or popup box) appear when hovering over "email address" and "password"
     showig text 'test"user.com and qwerty after hovering for 2 seconds
 
-  TC 2.1.4 – Confirm the presence of input fields: Email address textbox (pre-filled with "you@example.com"). Password textbox (labeled "Password").
+  TC 2.1.4 – Confirm the presence of input fields
 
     Preconditions:
     User is on the Login page.
@@ -578,9 +578,9 @@
     Basket is empty
 
     Test Steps:
-      from Sweets apage add 2 items to the basket
+      from Sweets apage add 3 items to the basket
       Click 'Login' and login with valid user details
-      Observe basket item counter in navigation and confirm 2 is shown
+      Observe basket item counter in navigation and confirm 3 is shown
       Click on the "Delete Item" button next to one product.
       Observe basket count and product list.
 
@@ -1369,21 +1369,30 @@
       Quantities/prices unchanged
       Total persists correctly
 
-  TC 6.2.10 Attempt checkout with empty basket
+  TC 6.2.10 Validate Promo Code Field Input Types
 
     Precondition:
-      Billing and adress form is filled with valid details
-      Basket is empty
+    user has atleat 1 item in basket
+    User is on the Basket page and promo code input is visible.
 
-    Test steps:
-      Click "Continue to Checkout"
+    Test Steps:
+      Clear the promo code input field
+      Enter the following values one by one and try to apply each:
+        Emojis (e.g., 🎁🔥)
+        Special characters (e.g., @#!$%^)
+        Mixed symbols and letters (e.g., SAVE@10, 123$)
+        Too long string (e.g., more than 20 characters)
+        Blank/space input
+      Enter a valid promo code like SWEET10 or DISCOUNT25.
 
     Expected Result:
-      "Your basket is empty" message
+      Invalid entries should be rejected or ignored.
+      Valid promo code should be accepted and apply the correct discount.
+      Error message should appear for invalid codes.
 
-    report bug payment passes with empty basket;
-
-TC 6.3.1 – Verify clicking each navigation link redirects to the correct page from the Your account page
+      report bug promo invalid message is not shown
+  
+  TC 6.3.1 – Verify clicking each navigation link redirects to the correct page from the Your account page
 
     Preconditions:
     User has a valid account (email & password).
@@ -1397,20 +1406,222 @@ TC 6.3.1 – Verify clicking each navigation link redirects to the correct page 
     Expected Result:
       Each navigation link from the "Your Account" page successfully redirects to the correct page.
 
- 
-TC 6.4.1 Validate First Name Field Input Types
+  TC 6.4.1 Validate First Name Field Input Types
 
-Precondition:
-Checkout form is visible.
+    Precondition:
+    User is on Basket page
+   
+    Test Steps:
+      Clear the first #name input.
+      Iterate over:
+      ['😀😃😄','@#!$','12345','John']
+      For each input:
+        Type the input.
+        Assert whether the invalid feedback is shown
 
-Test Steps:
-  Clear the #name input for first name (use .first()).
-  Type emojis (e.g., 😀😃😄) → Check if allowed.
-  Type special characters (e.g., @#!$) → Check if allowed.
-  Type numbers (e.g., 12345) → Check if allowed.
-  Type alphabetic characters (e.g., John) → Check if accepted as valid.
+    Expected Result:
+    Only alphabetic input should be accepted without validation error. Others should trigger invalid feedback.
 
-Expected Result:
-Only alphabetic input should be accepted without validation error. Others should trigger invalid feedback.
+  TC 6.4.2 Validate Last Name Field Input Types
+
+    Precondition:
+    User is on Basket page
+    Checkout form is visible.
+
+    Test Steps:
+      Clear the last #name input (use .last()).
+      Repeat test inputs from TC 6.4.1:
+      ['😀😃😄','@#!$','12345','John']
+
+    Expected Result:
+    Only alphabetic input should be accepted without validation error. Others should trigger invalid feedback.
+
+  TC 6.4.3 Validate Email Field Input Format
+
+    Precondition:
+    User is on Basket page
+
+    Test Steps:
+      Clear #email.
+      Iterate over:
+      ['john.doe', 'john@', '@gmail.com', 'john@@gmail.com', 'john.doe@.com', 'john.doe@com', 'john.doe@ gmail.com', '😊@gmail.com']
+      For each:
+        Type into email field.
+        Verify validation message appears.
+
+    Expected Result:
+    Only valid email format (e.g., test@example.com) should pass.
+
+  TC 6.4.4 Validate Address Field Input Types
+
+    Precondition:
+    User is on Basket page
+
+    Test Steps:
+      Clear #address.
+      Test inputs from:
+      ['🏡 123 St', '123 St 🚀', '!@#$%^']
+      For each:
+        Type input.
+        Verify validation message appears.
+
+    Expected Result:
+    Special characters should be accepted. Emojis should not pass (if validation exists). Field must not be empty.
+
+    TC 7.1.10 Validate Address 2 (Optional) Field Input Types
+
+  TC 6.4.5 Validate Address 2 (Optional) Field Input Types
+    Precondition:
+    User is on Basket page
+
+    Test Steps:
+      Clear #address2.
+      Input examples:
+      ['🌆🏢', '@#!$%^&*()', '56', 'Suite B', 'Apt 3B – 5th Floor']
+        For each:
+        Type input.
+        Verify validation message appears.
+     
+    Expected Result:
+      This field is optional — no validation error on empty.
+      Should accept alphanumeric + special characters.
+
+  TC 6.4.6 Validate Zip Field Format
+
+    Precondition:
+    User is on Basket page
+
+    Test Steps:
+      Clear #zip.
+      Iterate:
+      ['ABC123', '123AB', '😊123', '!@#$', '12 345']
+      For each:
+        Type value.
+        Assert validation result.
+
+    Expected Result:
+    Only 5-digit numeric values should be valid.
+
+  TC 6.4.7 Validate Cardholder Name Field
+
+    Precondition:
+    User is on Basket page
+
+    Test Steps:
+      Clear #cc-name.
+      Test with:
+      ['Jane123', '👑Jane', 'Jane$', '123456']
+      For each:
+        Type value.
+        Assert validation result.
+
+    Expected Result:
+    Only alphabetic name should be valid.
+
+  TC 6.4.8 Validate Card Number Field
+
+    Precondition:
+    User is on Basket page
+
+    Test Steps:
+      Clear #cc-number.
+      Test with:
+      ['4111-1111-1111-1111', 'abcd efgh', '😊😊😊😊', '4111 1111 1111 1111', '4111!1111!1111!1111'].
+      For each:
+        Type value.
+        Assert validation result.
+
+    Expected Result:
+    Only numeric 16-digit string should pass.
+
+  TC 6.4.9 Validate Expiry Date Format
+
+    Precondition:
+    User is on Basket page
+
+    Test Steps:
+      Clear #cc-expiration.
+      Try inputs:
+      ['13/25', '00/23', '01-25', '1/2025', 'Jan 2025', '😊']
+      For each:
+        Type value.
+        Assert validation result.
+
+    Expected Result:
+    Accept MM/YY format only.
+
+  TC 6.4.10 Validate CVV Field
+
+    Precondition:
+    User is on Basket page
+
+    Test Steps:
+      Clear #cc-cvv.
+      Test with:
+      ['12', '12345', 'abc', '!@#', '😊']
+      For each:
+        Type value.
+        Assert validation result.
+
+    Expected Result:
+    Only 3-digit number should be valid.
+
+  TC 6.5.1 – Valid Checkout Flow
+
+    Precondition:
+    User has at least one product in the basket.
+
+    Test Steps:
+      Add a product to the basket.
+      Navigate to checkout.
+      Fill in all billing and payment fields with valid data.
+      Submit the form.
+
+    Expected Result:
+    Checkout is completed successfully. Basket is empty.
+    
+    Report bug BASKET DOES NOT CLEAR itself afyer successful scheckout
+  
+  TC 6.5.2 – Attempt Checkout with Empty Basket
+
+    Precondition:
+    Basket is empty.
+    Billing and adress form is filled with valid details
+
+    Test Steps:
+      Navigate to checkout without adding any products.
+      Attempt to submit the form.
+
+    Expected Result:
+    Checkout should not proceed. A warning like “Basket is empty” or disabled checkout button should be shown.
+
+    report bug payment passes with empty basket;
+
+  TC 6.5.3 – Attempt Checkout with Partially Completed Form
+
+  Precondition:
+  User has alteast 1 item in the basket.
+
+  Test Steps:
+    Go to checkout page.
+    Leave required fields (e.g., first name, card number) blank.
+    Try to submit the form.
+
+  Expected Result:
+  Form should not submit. Inline validation errors should appear for incomplete/invalid fields.
+
+  TC 6.5.4 – Attempt Checkout with Invalid Form Inputs
+
+    Precondition:
+    User has items in the basket.
+
+    Test Steps:
+      Fill forms with valid data except for 1 field (e.g., “---” for cvv).
+      Submit the form.
+
+    Expected Result:
+    Form should not submit. Proper error messages should be shown.
+
+
 
 
