@@ -1,6 +1,8 @@
 
 
-cypress/e2e/sweetshop_tests/detailedTests copy.txt
+cypress/screenshots
+cypress/e2e/detailedTests.txt
+cypress/e2e/TestCasess.md
 cypress/e2e/2-advanced-examples/
 
 # Logs

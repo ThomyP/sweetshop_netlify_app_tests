@@ -1,24 +1,3 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('login', (email, password) => {
     cy.get('#exampleInputEmail').type(email);
@@ -32,7 +11,6 @@ Cypress.Commands.add('addTwoItemsToBasket', () => {
   cy.get('a.addItem[data-name="Chocolate Cups"]').click();
   cy.get('a.addItem[data-name="Sherbert Straws"]').click();
 });
-
 
 Cypress.Commands.add('addProductsToBasket', (count = 1, sameProduct = false) => {
   const addedProducts = [];
@@ -82,28 +60,6 @@ Cypress.Commands.add('addProductsToBasket', (count = 1, sameProduct = false) => 
   }
 });
 
-Cypress.Commands.add('verifyBasketProducts', () => {
-  const expectedProducts = Cypress.env('addedProducts') || [];
-  
-  cy.get('#basketCount').should('have.text', expectedProducts.length.toString());
-
-  expectedProducts.forEach((product, index) => {
-    cy.get(`#basketItems li:not(:contains("Total")):eq(${index})`).within(() => {
-      cy.get('h6.my-0').should('contain', product.name);
-      cy.get('small.text-muted').should('contain', `x ${product.quantity || 1}`);
-      cy.get('span.text-muted').last().should('contain', product.price);
-      cy.contains('a.small', 'Delete Item').should('exist');
-    });
-  });
-
-  const expectedTotal = expectedProducts.reduce((sum, p) => {
-  return sum + (parseFloat(p.price.replace('£', '')) * (p.quantity || 1));
-  }, 0).toFixed(2);
-  
-  cy.contains('#basketItems li', 'Total (GBP)')
-    .find('strong')
-    .should('contain', `£${expectedTotal}`);
-});
 
 Cypress.Commands.add('clearBasket', () => {
   cy.visit('https://sweetshop.netlify.app/basket');

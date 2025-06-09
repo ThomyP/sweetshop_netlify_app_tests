@@ -866,20 +866,6 @@ Ensure promotional or advertising elements are displayed on the Home page.
 - Each navigation link from the "Home" page successfully redirects to the correct page.
 
 
----
-
-### TC 2.3.1 – Verify clicking each navigation link redirects to the correct page from the Login page
-
-**Preconditions:**
-- User is on Login page
-
-**Test Steps:**
-1. Navigate from "Login" page using each nav link. 
-2. Verify each redirect
-   
-**Expected Result:**
-- Each navigation link from the "Login" page successfully redirects to the correct page.
-
 ## 4.3 Functional testing
 
 ### TC 4.3.1 – Verify the 'Browse sweets' button is visible and redirects user to sweets page.
@@ -915,81 +901,7 @@ Ensure promotional or advertising elements are displayed on the Home page.
 
 ---
 
-### TC 4.4.1 – From Home page, navigate to Login page → perform successful login → confirm redirection back to Home
 
-Test Summary:
-Verify the login workflow from the Home page redirects back to Home upon successful authentication.
-**Preconditions:**
-- User is on the Home page and has valid login credentials.
-
-**Test Steps:**
-1. Click on the “Login” link in the navbar.
-2. On the Login page, enter valid credentials and submit the form.
-3. Observe the redirection behavior after login.
-
-**Expected Result:**
-- User is successfully logged in and redirected back to the Home page.
-
----
-
-### TC 4.4.2 – Add item from 'most popular' container → verify basket counter updates
-
-Test Summary:
-Ensure that adding a product from the 'most popular' section updates the basket counter.
-**Preconditions:**
-- User is on the Home page with at least one item listed under 'most popular'.
-
-**Test Steps:**
-1. Scroll to the 'most popular' section.
-2. Click on “Add to Basket” for any product.
-3. Observe the basket counter in the header.
-
-**Expected Result:**
-- The basket counter increments by 1.
-
----
-
-### TC 4.4.3 – Navigate to Basket page → verify added items are present
-
-Test Summary:
-Verify that items added from the Home page appear correctly in the Basket page.
-**Preconditions:**
-- User has added one or more items to the basket.
-
-**Test Steps:**
-1. Click on the “Basket” link in the header.
-2. On the Basket page, review the list of items.
-
-**Expected Result:**
-- Previously added items are displayed in the basket with correct quantity and details.
-
----
-
-### TC 4.4.1 – Add item from 'most popular'and verify basket counter updates.
-
-**Preconditions:**
-- User is on the homepage
-- Cart is empty (counter shows "0")
-
-**Test Steps:**
-1. Click "Add to Basket" for "Sherbert Straws" (£0.75)
-2. Immediately verify:
-3. Cart counter updates from "0" → "1"
-4. Click "Add to Basket" for "Bon Bons" (£1.00) twice
-5. Verify:
-6. Cart counter updates to "3"
-
-**Expected Result:**
-- Counter increments instantly on each click
-- No page reload required
-
----
-
-### TC 4.4.2 – Verify Basket page displays added items correctly
-
-**Preconditions:**
-
----
 
 # 5. Sweet Shop - Sweets Page Test Cases
 

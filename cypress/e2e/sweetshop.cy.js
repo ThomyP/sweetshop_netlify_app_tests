@@ -373,7 +373,7 @@ describe('Sweeshop E-comer Website', () => {
         cy.fixture('validUser').then((user) =>{
           cy.get('#exampleInputEmail').type(user.email);
           cy.get('#exampleInputPassword').type(user.password);
-        })
+        });
 
         cy.contains('button', 'Login').click();
 
@@ -525,14 +525,12 @@ describe('Sweeshop E-comer Website', () => {
       });
 
       it('TC 3.1.6 - Validate specific order data', () => {
-        expectedOrders.forEach((order, index) => {
-          cy.get('#transactions tbody tr').eq(index).within(() => {
-            cy.contains(order.description).should('be.visible');
-            cy.contains(order.total).should('be.visible');
+          expectedOrders.forEach((order, index) => {
+            cy.get('#transactions tbody tr').eq(index).within(() => {
+              cy.contains(order.description).should('be.visible');
+              cy.contains(order.total).should('be.visible');
+          });
         });
-      });
-
-       
       });
 
       it('TC 3.1.7 - Order dates are in readable format', () => {
@@ -614,7 +612,7 @@ describe('Sweeshop E-comer Website', () => {
         });
       });
 
-      it.only('TC 3.2.5 - Verify "Delete Item" functionality updates count and retains remaining items', () => {
+      it('TC 3.2.5 - Verify "Delete Item" functionality updates count and retains remaining items', () => {
         cy.clearBasket();
         cy.visit(sweetsPage);
         cy.addProductsToBasket(3);
@@ -853,7 +851,7 @@ describe('Sweeshop E-comer Website', () => {
 
     describe('5.3 Menu Navigation ', () => {
 
-      it(`TC 4.2.1 Verify clicking each navigation link redirects to the correct page`, () => {
+      it(`TC 5.3.1 Verify clicking each navigation link redirects to the correct page`, () => {
         links.forEach(({ selector, expectedUrl, verify }) => {
           cy.visit(loginPage);
           cy.get(selector).click();
@@ -1056,8 +1054,6 @@ describe('Sweeshop E-comer Website', () => {
 
         cy.get('#basketItems li:contains("Total") strong').should('contain', '0');
       });
-
-
 
       });
 
@@ -1349,29 +1345,3 @@ describe('Sweeshop E-comer Website', () => {
 
 });
 
-
-// describe framework
-  // describe('3. Sweet Shop - Your Account Page Test Cases', () => {
-    
-  //   beforeEach(() => {
-  //     cy.visit(loginPage);
-  //   });
-
-  //   describe('3.1 Page Load and UI Tests', () => {
-
-        // it(`TC 2.1.2 `, () => {
-        
-        // });
-  //   });
-
-  //   describe('3.2 Your Account Functionality Tests', () => {
-    
-  //   });
-
-  //   describe('3.3 Menu Navigation ', () => {
-    
-  //   });
-
-
-
-  // });
