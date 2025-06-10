@@ -1,5 +1,7 @@
 # Sweet Shop test cases https://sweetshop.netlify.app/
 
+➡️ [Back to README](/README.md).
+
 # 1. Sweet Shop - About Page Test Cases
 ## 1.1 Page Load and UI Tests
 ### TC 1.1.1 – Check the page has title 'Sweet Shop Project'
@@ -60,17 +62,75 @@
   ---
   
 ## 1.2 Navigation and Menu redirection
-### TC 1.2.1 – Verify clicking each navigation link redirects to the correct page from the About page
+
+### TC 1.2.1 – Verify clicking 'Sweet Shop' navigates correctly from About page
 
 **Preconditions:**
-- User is on About page 
+- User is on About page
 
 **Test Steps:**
-1. Navigate from "About" page using each nav link.
-2. Verify each redirect
+1. Click `'Sweet Shop'` in navbar (selector: `.navbar-brand`)
 
 **Expected Result:**
-- Each navigation link from the "About" page successfully redirects to the correct page.
+- User is navigated to the Home page
+- The advertising section is visible
+
+---
+
+### TC 1.2.2 – Verify clicking 'Sweets' navigates correctly from About page
+
+**Preconditions:**
+- User is on About page
+
+**Test Steps:**
+1. Click `'Sweets'` in navbar (selector: `a.nav-link[href="/sweets"]`)
+
+**Expected Result:**
+- User is navigated to the Sweets page
+- Heading `'Browse sweets'` is visible
+
+---
+
+### TC 1.2.3 – Verify clicking 'About' navigates correctly from About page
+
+**Preconditions:**
+- User is on About page
+
+**Test Steps:**
+1. Click `'About'` in navbar (selector: `a.nav-link[href="/about"]`)
+
+**Expected Result:**
+- User remains on the About page
+- Heading `'Sweet Shop Project'` is visible
+
+---
+
+### TC 1.2.4 – Verify clicking 'Login' navigates correctly from About page
+
+**Preconditions:**
+- User is on About page
+
+**Test Steps:**
+1. Click `'Login'` in navbar (selector: `a.nav-link[href="/login"]`)
+
+**Expected Result:**
+- User is navigated to the Login page
+- Heading `'Login'` is visible
+
+---
+
+### TC 1.2.5 – Verify clicking 'Basket' navigates correctly from About page
+
+**Preconditions:**
+- User is on About page
+
+**Test Steps:**
+1. Click `'Basket'` in navbar (selector: `a.nav-link[href="/basket"]`)
+
+**Expected Result:**
+- User is navigated to the Basket page
+- Heading `'Your Basket'` is visible
+
 
 ---
 
@@ -397,7 +457,78 @@
 ---
 
 ## 2.3 Menu Navigation
-### TC 2.3.1 – Verify clicking each navigation link redirects to the correct page from the Login page
+
+### TC 2.3.1 – Verify clicking 'Sweet Shop' navigates correctly from Login page
+
+**Preconditions:**
+- User is on Login page
+
+**Test Steps:**
+1. Click `'Sweet Shop'` in navbar (selector: `.navbar-brand`)
+
+**Expected Result:**
+- User is navigated to the Home page
+- The advertising section is visible
+
+---
+
+### TC 2.3.2 – Verify clicking 'Sweets' navigates correctly from Login page
+
+**Preconditions:**
+- User is on Login page
+
+**Test Steps:**
+1. Click `'Sweets'` in navbar (selector: `a.nav-link[href="/sweets"]`)
+
+**Expected Result:**
+- User is navigated to the Sweets page
+- Heading `'Browse sweets'` is visible
+
+---
+
+### TC 2.3.3 – Verify clicking 'About' navigates correctly from Login page
+
+**Preconditions:**
+- User is on Login  page
+
+**Test Steps:**
+1. Click `'About'` in navbar (selector: `a.nav-link[href="/about"]`)
+
+**Expected Result:**
+- User remains on the About page
+- Heading `'Sweet Shop Project'` is visible
+
+---
+
+### TC 2.3.4 – Verify clicking 'Login' navigates correctly from Login page
+
+**Preconditions:**
+- User is on Login page
+
+**Test Steps:**
+1. Click `'Login'` in navbar (selector: `a.nav-link[href="/login"]`)
+
+**Expected Result:**
+- User is navigated to the Login page
+- Heading `'Login'` is visible
+
+---
+
+### TC 2.3.5 – Verify clicking 'Basket' navigates correctly from Login page
+
+**Preconditions:**
+- User is on Login page
+
+**Test Steps:**
+1. Click `'Basket'` in navbar (selector: `a.nav-link[href="/basket"]`)
+
+**Expected Result:**
+- User is navigated to the Basket page
+- Heading `'Your Basket'` is visible
+
+
+---
+
 
 **Preconditions:**
 - User is on Login page
@@ -650,22 +781,83 @@ Ensure clicking the "Date Ordered" column header sorts orders from most recent t
 
 ## 3.3 Menu Navigation
 
-### TC 3.3.1 – Verify clicking each navigation link redirects to the correct page from the Your account page
+### TC 3.3.1 – Verify clicking 'Sweet Shop' navigates correctly from Your Account page
 
 **Preconditions:**
-- User has a valid account (email & password).
+- User has valid login credentials
+- User is on Login page
 
 **Test Steps:**
-1. Log in.
-2. Navigates from "Your Account" page using each nav link.
-3. Verifies each redirect + title.
-4. Logs in again after each navigation (to simulate session reset).
+1. Login into Your Account
+2. Click `'Sweet Shop'` in navbar (selector: `.navbar-brand`)
 
 **Expected Result:**
-- Each navigation link from the "Your Account" page successfully redirects to the correct page.
-- 4. Home page Functionality
+- User is navigated to the Home page
+- The advertising section is visible
 
 ---
+
+### TC 3.3.2 – Verify clicking 'Sweets' navigates correctly from Your Account page
+
+**Preconditions:**
+- User has valid login credentials
+- User is on Login page
+
+**Test Steps:**
+1. Login into Your Account
+2. Click `'Sweets'` in navbar (selector: `a.nav-link[href="/sweets"]`)
+
+**Expected Result:**
+- User is navigated to the Sweets page
+- Heading `'Browse sweets'` is visible
+
+---
+
+### TC 3.3.3 – Verify clicking 'About' navigates correctly from Your Account page
+
+**Preconditions:**
+- User has valid login credentials
+- User is on Login  page
+
+**Test Steps:**
+1. Login into Your Account
+2. Click `'About'` in navbar (selector: `a.nav-link[href="/about"]`)
+
+**Expected Result:**
+- User remains on the About page
+- Heading `'Sweet Shop Project'` is visible
+
+---
+
+### TC 3.3.4 – Verify clicking 'Login' navigates correctly from Your Account page
+
+**Preconditions:**
+- User has valid login credentials
+- User is on Login page
+
+**Test Steps:**
+1. Login into Your Account
+2. Click `'Login'` in navbar (selector: `a.nav-link[href="/login"]`)
+
+**Expected Result:**
+- User is navigated to the Login page
+- Heading `'Login'` is visible
+
+---
+
+### TC 3.3.5 – Verify clicking 'Basket' navigates correctly from Your Account page
+
+**Preconditions:**
+- User has valid login credentials
+- User is on Login page
+
+**Test Steps:**
+1. Login into Your Account
+2. Click `'Basket'` in navbar (selector: `a.nav-link[href="/basket"]`)
+
+**Expected Result:**
+- User is navigated to the Basket page
+- Heading `'Your Basket'` is visible
 
 
 # 4. Sweet Shop - Home Page Test Cases
@@ -854,16 +1046,88 @@ Ensure promotional or advertising elements are displayed on the Home page.
 
 ## 4.2 Navigation and Menu
 
-### TC 4.2.1 – Verify clicking each navigation link redirects to the correct page
+### TC 4.2.1 – Verify clicking 'Sweet Shop' navigates correctly from Home page
+
 **Preconditions:**
 - User is on Home page
 
 **Test Steps:**
-1. Navigate from "Home" page using each nav link. 
+1. Click `'Sweet Shop'` in navbar (selector: `.navbar-brand`)
+
+**Expected Result:**
+- User is navigated to the Home page
+- The advertising section is visible
+
+---
+
+### TC 4.2.2 – Verify clicking 'Sweets' navigates correctly from Home page
+
+**Preconditions:**
+- User is on Home page
+
+**Test Steps:**
+1. Click `'Sweets'` in navbar (selector: `a.nav-link[href="/sweets"]`)
+
+**Expected Result:**
+- User is navigated to the Sweets page
+- Heading `'Browse sweets'` is visible
+
+---
+
+### TC 4.2.3 – Verify clicking 'About' navigates correctly from Home page
+
+**Preconditions:**
+- User is on Home  page
+
+**Test Steps:**
+1. Click `'About'` in navbar (selector: `a.nav-link[href="/about"]`)
+
+**Expected Result:**
+- User remains on the About page
+- Heading `'Sweet Shop Project'` is visible
+
+---
+
+### TC 4.2.4 – Verify clicking 'Login' navigates correctly from Home page
+
+**Preconditions:**
+- User is on Home page
+
+**Test Steps:**
+1. Click `'Login'` in navbar (selector: `a.nav-link[href="/login"]`)
+
+**Expected Result:**
+- User is navigated to the Login page
+- Heading `'Login'` is visible
+
+---
+
+### TC 4.2.5 – Verify clicking 'Basket' navigates correctly from Home page
+
+**Preconditions:**
+- User is on Home page
+
+**Test Steps:**
+1. Click `'Basket'` in navbar (selector: `a.nav-link[href="/basket"]`)
+
+**Expected Result:**
+- User is navigated to the Basket page
+- Heading `'Your Basket'` is visible
+
+---
+
+
+**Preconditions:**
+- User is on Login page
+
+**Test Steps:**
+1. Navigate from "Login" page using each nav link. 
 2. Verify each redirect
    
 **Expected Result:**
-- Each navigation link from the "Home" page successfully redirects to the correct page.
+- Each navigation link from the "Login" page successfully redirects to the correct page.
+
+---
 
 
 ## 4.3 Functional testing
@@ -1037,17 +1301,91 @@ Ensure promotional or advertising elements are displayed on the Home page.
 
 
 ## 5.3 Navigation and Menu
-### TC 5.3.1 – Verify clicking each navigation link redirects to the correct page from the Your account page
+
+### TC 5.3.1 – Verify clicking 'Sweet Shop' navigates correctly from Sweets page
 
 **Preconditions:**
-- User is on Sweets page 
+- User is on Sweets page
 
 **Test Steps:**
-1. Navigate from "Sweets" page using each nav link.
-2. Verify each redirect
+1. Click `'Sweet Shop'` in navbar (selector: `.navbar-brand`)
 
 **Expected Result:**
-- Each navigation link from the "sweets" page successfully redirects to the correct page.
+- User is navigated to the Home page
+- The advertising section is visible
+
+---
+
+### TC 5.3.2 – Verify clicking 'Sweets' navigates correctly from Sweets page
+
+**Preconditions:**
+- User is on Sweets page
+
+**Test Steps:**
+1. Click `'Sweets'` in navbar (selector: `a.nav-link[href="/sweets"]`)
+
+**Expected Result:**
+- User is navigated to the Sweets page
+- Heading `'Browse sweets'` is visible
+
+---
+
+### TC 5.3.3 – Verify clicking 'About' navigates correctly from Sweets page
+
+**Preconditions:**
+- User is on Sweets  page
+
+**Test Steps:**
+1. Click `'About'` in navbar (selector: `a.nav-link[href="/about"]`)
+
+**Expected Result:**
+- User remains on the About page
+- Heading `'Sweet Shop Project'` is visible
+
+---
+
+### TC 5.3.4 – Verify clicking 'Login' navigates correctly from Sweets page
+
+**Preconditions:**
+- User is on Sweets page
+
+**Test Steps:**
+1. Click `'Login'` in navbar (selector: `a.nav-link[href="/login"]`)
+
+**Expected Result:**
+- User is navigated to the Login page
+- Heading `'Login'` is visible
+
+---
+
+### TC 5.3.5 – Verify clicking 'Basket' navigates correctly from Sweets page
+
+**Preconditions:**
+- User is on Sweets page
+
+**Test Steps:**
+1. Click `'Basket'` in navbar (selector: `a.nav-link[href="/basket"]`)
+
+**Expected Result:**
+- User is navigated to the Basket page
+- Heading `'Your Basket'` is visible
+
+---
+
+
+**Preconditions:**
+- User is on Login page
+
+**Test Steps:**
+1. Navigate from "Login" page using each nav link. 
+2. Verify each redirect
+   
+**Expected Result:**
+- Each navigation link from the "Login" page successfully redirects to the correct page.
+
+---
+
+
 
 # 6. Sweet Shop - Basket Page Test Cases
 
@@ -1480,17 +1818,74 @@ Ensure promotional or advertising elements are displayed on the Home page.
 
 ## 6.3 Navigation and Menu
 
-### TC 6.3.1 – Verify clicking each navigation link redirects to the correct page from the Your account page
+### TC 6.3.1 – Verify clicking 'Sweet Shop' navigates correctly from Basket page
 
 **Preconditions:**
 - User is on Basket page
 
 **Test Steps:**
-1. Navigate from "Basket" page using each nav link.
-2. Verify each redirect
+1. Click `'Sweet Shop'` in navbar (selector: `.navbar-brand`)
 
 **Expected Result:**
-- Each navigation link from the "Basket" page successfully redirects to the correct page.
+- User is navigated to the Home page
+- The advertising section is visible
+
+---
+
+### TC 6.3.2 – Verify clicking 'Sweets' navigates correctly from Basket page
+
+**Preconditions:**
+- User is on Basket page
+
+**Test Steps:**
+1. Click `'Sweets'` in navbar (selector: `a.nav-link[href="/sweets"]`)
+
+**Expected Result:**
+- User is navigated to the Sweets page
+- Heading `'Browse sweets'` is visible
+
+---
+
+### TC 6.3.3 – Verify clicking 'About' navigates correctly from Basket page
+
+**Preconditions:**
+- User is on Basket  page
+
+**Test Steps:**
+1. Click `'About'` in navbar (selector: `a.nav-link[href="/about"]`)
+
+**Expected Result:**
+- User remains on the About page
+- Heading `'Sweet Shop Project'` is visible
+
+---
+
+### TC 6.3.4 – Verify clicking 'Login' navigates correctly from Basket page
+
+**Preconditions:**
+- User is on Basket page
+
+**Test Steps:**
+1. Click `'Login'` in navbar (selector: `a.nav-link[href="/login"]`)
+
+**Expected Result:**
+- User is navigated to the Login page
+- Heading `'Login'` is visible
+
+---
+
+### TC 6.3.5 – Verify clicking 'Basket' navigates correctly from Basket page
+
+**Preconditions:**
+- User is on Basket page
+
+**Test Steps:**
+1. Click `'Basket'` in navbar (selector: `a.nav-link[href="/basket"]`)
+
+**Expected Result:**
+- User is navigated to the Basket page
+- Heading `'Your Basket'` is visible
+
 
 ## 6.4 Billing address and Payment form validation
 

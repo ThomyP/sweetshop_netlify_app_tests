@@ -29,7 +29,7 @@ This document explains how test cases are written, managed, and how bugs are rep
 
 ---
 
-✅  You can access the full test cases [here](cypress/e2e/TestCases.md).
+✅  You can access the full test cases [here](cypress/testCases/TestCases.md).
 
 ✅  Full Cypress test file [here](cypress/e2e/sweetshop.cy.js).
 

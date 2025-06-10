@@ -18,26 +18,31 @@ describe('Sweeshop E-comer Website', () => {
 
   const links = [
       {
+        naming: `'Sweet Shop'`,
         selector: '.navbar-brand',
         expectedUrl: site,
         verify: () => cy.get('.advertising').should('be.visible'),
       },
       {
+        naming: `'Sweets'`,
         selector: 'a.nav-link[href="/sweets"]',
         expectedUrl: sweetsPage,
         verify: () => cy.get('.display-3').contains('Browse sweets').should('be.visible'),
       },
       {
+        naming: `'About'`,
         selector: 'a.nav-link[href="/about"]',
         expectedUrl: aboutPage,
         verify: () => cy.get('.display-3').contains('Sweet Shop Project').should('be.visible'),
       },
       {
+        naming: `'Login'`,
         selector: 'a.nav-link[href="/login"]',
         expectedUrl: loginPage,
         verify: () => cy.get('.display-3').contains('Login').should('be.visible'),
       },
       {
+        naming: `'Basket'`,
         selector: 'a.nav-link[href="/basket"]',
         expectedUrl: basketPage,
         verify: () => cy.get('.display-3').contains('Your Basket').should('be.visible'),
@@ -263,14 +268,16 @@ describe('Sweeshop E-comer Website', () => {
     });
 
     describe('1.2 Navigation and Menu', () => {
-      it(`TC 2.2.1 Verify clicking each navigation link redirects to the correct page`, () => {
-        links.forEach(({ selector, expectedUrl, verify }) => {
+
+      links.forEach(({ naming ,selector, expectedUrl, verify }, index) => {
+      it(`TC 1.2.${index + 1} - Verify clicking ${naming} navigates correctly from About page`, () => {
           cy.visit(loginPage);
           cy.get(selector).click();
           cy.url().should('eq', expectedUrl);
           verify();
         });
       });
+
     });
 
   });
@@ -454,12 +461,11 @@ describe('Sweeshop E-comer Website', () => {
         cy.url().eq(liLogin)
       });
 
-    
     });
 
     describe('2.3 Navigation and Menu', () => {
-      it(`TC 2.3.1 Verify clicking each navigation link redirects to the correct page`, () => {
-        links.forEach(({ selector, expectedUrl, verify }) => {
+    links.forEach(({ naming ,selector, expectedUrl, verify }, index) => {
+      it(`TC 2.3.${index + 1} - Verify clicking ${naming} navigates correctly from Login page`, () => {
           cy.visit(loginPage);
           cy.get(selector).click();
           cy.url().should('eq', expectedUrl);
@@ -565,7 +571,7 @@ describe('Sweeshop E-comer Website', () => {
     describe('3.2 Your Account Functionality Tests', () => {
 
       it('TC 3.2.1 - Verify sorting by "Order Number" (descending)', () => {
-        cy.get('a.order-number').click();
+        cy.get('a.order-number').click().click();
 
         cy.get('#transactions tbody tr th[scope="row"]')
           .should('have.length', expectedOrderNumbers.length)
@@ -579,10 +585,11 @@ describe('Sweeshop E-comer Website', () => {
 
         function parseDate(text) {
           return new Date(text.replace(/(\d+)(st|nd|rd|th)/, '$1'));
-        }
+        };
 
         cy.get('#transactions tbody tr td:nth-child(2)').then($cells => {
-          const dates = [...$cells].map(cell => parseDate(cell.innerText));
+          const dates = [...$cells].map(cell => parseDate(cell.innerText.trim()));
+
           for (let i = 0; i < dates.length - 1; i++) {
             expect(dates[i].getTime()).to.be.gte(dates[i + 1].getTime());
           }
@@ -591,13 +598,15 @@ describe('Sweeshop E-comer Website', () => {
 
       it('TC 3.2.3 - Verify sorting by "Order Description" (Z → A)', () => {
         cy.get('a.order-description').click();
-        cy.get('a.order-description').click();  
 
-        cy.get('#transactions tbody tr td:nth-child(3)').then($cells => {
-          const descriptions = [...$cells].map(cell => cell.innerText.trim().toLowerCase());
+          cy.get('#transactions tbody tr td:nth-child(3)').then($cells => {
+          const descriptions = [...$cells].map(cell => {
+            return cell.innerText.replace(/\n/g, ' ').toLowerCase().trim();
+          });
+          
           for (let i = 0; i < descriptions.length - 1; i++) {
-            expect(descriptions[i].localeCompare(descriptions[i + 1])).to.be.gte(0); 
-          }
+            expect(descriptions[i].localeCompare(descriptions[i + 1])).to.be.gte(0);
+          };
         });
       });
 
@@ -631,16 +640,21 @@ describe('Sweeshop E-comer Website', () => {
     });
   
     describe('TC 3.3.1 - Navigation from Your Account Page', () => {
-      links.forEach(({ selector, expectedUrl, verify }) => {
-        it(`Verify clicking each navigation link redirects to the correct page from the Login page`, () => {
-          cy.loginAndGoToAccountPage(validEmail, testPassword)
 
+      links.forEach(({ naming ,selector, expectedUrl, verify }, index) => {
+        it(`TC 3.3.${index + 1} - Verify clicking ${naming} navigates correctly from Your Account page`, () => {
+          cy.visit(loginPage)
+          cy.login(validEmail, testPassword)
+
+          cy.visit(loginPage);
           cy.get(selector).click();
           cy.url().should('eq', expectedUrl);
           verify();
         });
       });
+
     });
+
   });
 
   describe('4. Sweet Shop - Home Page Test Cases', () => {
@@ -728,8 +742,8 @@ describe('Sweeshop E-comer Website', () => {
 
     describe('4.2 Navigation and Menu', () => {
 
-      it(`TC 4.2.1 Verify clicking each navigation link redirects to the correct page`, () => {
-        links.forEach(({ selector, expectedUrl, verify }) => {
+      links.forEach(({ naming ,selector, expectedUrl, verify }, index) => {
+      it(`TC 4.2.${index + 1} - Verify clicking ${naming} navigates correctly Home page`, () => {
           cy.visit(loginPage);
           cy.get(selector).click();
           cy.url().should('eq', expectedUrl);
@@ -851,8 +865,8 @@ describe('Sweeshop E-comer Website', () => {
 
     describe('5.3 Menu Navigation ', () => {
 
-      it(`TC 5.3.1 Verify clicking each navigation link redirects to the correct page`, () => {
-        links.forEach(({ selector, expectedUrl, verify }) => {
+      links.forEach(({ naming ,selector, expectedUrl, verify }, index) => {
+      it(`TC 5.3.${index + 1} - Verify clicking ${naming} navigates correctly Browse sweets page`, () => {
           cy.visit(loginPage);
           cy.get(selector).click();
           cy.url().should('eq', expectedUrl);
@@ -1173,14 +1187,16 @@ describe('Sweeshop E-comer Website', () => {
     });
 
     describe('6.3 Navigation and Menu', () => {
-      it(`TC 4.2.1 Verify clicking each navigation link redirects to the correct page`, () => {
-        links.forEach(({ selector, expectedUrl, verify }) => {
+      
+      links.forEach(({ naming ,selector, expectedUrl, verify }, index) => {
+      it(`TC 5.3.${index + 1} - Verify clicking ${naming} navigates correctly Basket page`, () => {
           cy.visit(loginPage);
           cy.get(selector).click();
           cy.url().should('eq', expectedUrl);
           verify();
         });
       });
+
     });
 
     describe('6.4 Billing address and Payment form validation tests', () => {

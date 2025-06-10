@@ -9,9 +9,9 @@ This project contains beautifully crafted automated UI and functional tests for 
 ## ✅ Test Summary
 | Metric                 | Count            |
 | ------------------     | -----------------|
-| 🎯 **Total Tests**    | 110               |
-| ✅ **Passing**        |  86               |
-| ❌ **Failing**        | 24                |
+| 🎯 **Total Tests**    | 130               |
+| ✅ **Passing**        |  107               |
+| ❌ **Failing**        | 23               |
 | 📄 **Spec File**      | `sweetshop.cy.js` 
   
 
@@ -26,16 +26,16 @@ All test cases are maintained in the TestCases.md file and are also mirrored in 
 ✅ Functional test cases are written per page/module and linked below:
 🔍 Full Test Case Index
 
-- [1. About Page](cypress/e2e/TestCases.md#1-sweet-shop---about-page-test-cases)
-- [2. Login Page](cypress/e2e/TestCases.md#2-sweet-shop---login-page-test-cases)
-- [3. Your Account Page](cypress/e2e/TestCases.md#3-sweet-shop---your-account-page-test-cases)
-- [4. Home Page](cypress/e2e/TestCases.md#4-sweet-shop---home-page-test-cases)
-- [5. Sweets Page](cypress/e2e/TestCases.md#5-sweet-shop---sweets-page-test-cases)
-- [6. Basket Page](cypress/e2e/TestCases.md#6-sweet-shop---basket-page-test-cases)  
+- [1. About Page](cypress/testCases/TestCases.md#1-sweet-shop---about-page-test-cases)
+- [2. Login Page](cypress/testCases/TestCases.md#2-sweet-shop---login-page-test-cases)
+- [3. Your Account Page](cypress/testCases/TestCases.md#3-sweet-shop---your-account-page-test-cases)
+- [4. Home Page](cypress/testCases/TestCases.md#4-sweet-shop---home-page-test-cases)
+- [5. Sweets Page](cypress/testCases/TestCases.md#5-sweet-shop---sweets-page-test-cases)
+- [6. Basket Page](cypress/testCases/TestCases.md#6-sweet-shop---basket-page-test-cases)  
    
 
 📄 View the full test case documentation:
-➡️ [here](cypress/e2e/TestCases.md).
+➡️ [here](cypress/testCases/TestCases.md).
 
 
 ## 📁 Project Structure
@@ -43,8 +43,9 @@ All test cases are maintained in the TestCases.md file and are also mirrored in 
 ```
 📁sweetshop_project
 ├──📁cypress                     – Cypress test framework folder
-│   └── 📁e2e
-│        ├── 🧾 `sweetshop.cy.js`– Main Cypress test specification
+│   ├── 📁e2e
+│   │    └──🧾 `sweetshop.cy.js`– Main Cypress test specification
+│   └── 📁 TestCases
 │        └── 📝 `TestCases.md`   – Fully detailed test cases
 ├── ⚙️ `cypress.config.js`       – Cypress configuration file
 ├── 📘 `README.md`               – Project documentation (this file)

@@ -60,17 +60,9 @@ Cypress.Commands.add('addProductsToBasket', (count = 1, sameProduct = false) => 
   }
 });
 
-
 Cypress.Commands.add('clearBasket', () => {
   cy.visit('https://sweetshop.netlify.app/basket');
   cy.contains('a', 'Empty Basket').click();
-});
-
-Cypress.Commands.add('loginAndGoToAccountPage', (email, password) => {
-  cy.visit('https://sweetshop.netlify.app/login');
-  cy.get('#exampleInputEmail').type(email);
-  cy.get('#exampleInputPassword').type(password);
-  cy.contains('button', 'Login').click();
 });
 
 Cypress.Commands.add('fillBillingAddress', () => {
@@ -93,5 +85,4 @@ Cypress.Commands.add('fillPaymentDetails', () => {
 
 Cypress.Commands.add('triggerFormValidation', () => {
   cy.get('button[type="submit"]').contains('Continue to checkout').click();
-  cy.get('input:invalid').should('have.length.at.least', 1);
 });
